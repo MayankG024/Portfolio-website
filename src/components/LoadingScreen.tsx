@@ -17,7 +17,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
   ];
 
   useEffect(() => {
-    const duration = 2500; // 4.5 seconds total loading (much slower for full visibility)
+    const duration = 1000; // 1 second total loading (much slower for full visibility)
     const steps = 100;
     const stepDuration = duration / steps;
 
@@ -34,7 +34,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
 
         if (next >= 100) {
           clearInterval(progressTimer);
-          setTimeout(onLoadingComplete, 500); // Extended delay to showcase completion
+          setTimeout(onLoadingComplete, 200); // Extended delay to showcase completion
         }
 
         return next;
