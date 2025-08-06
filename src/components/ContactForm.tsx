@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Send } from 'lucide-react';
+import { trackContactForm } from '../utils/analytics';
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -17,17 +18,34 @@ export function ContactForm() {
       ...prev,
       [name]: value
     }));
+
+    // Track when user starts typing (first character)
+    if (value.length === 1 && !isSubmitting) {
+      trackContactForm('start');
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Track form submission attempt
+    trackContactForm('submit');
     
-    setIsSubmitting(false);
-    setShowSuccess(true);
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      setIsSubmitting(false);
+      setShowSuccess(true);
+      
+      // Track successful submission
+      trackContactForm('success');
+    } catch (error) {
+      setIsSubmitting(false);
+      // Track form error
+      trackContactForm('error');
+    }
     setFormData({ name: '', email: '', message: '' });
     
     // Hide success message after 3 seconds

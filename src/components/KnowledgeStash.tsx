@@ -4,6 +4,7 @@ import { ContactForm } from './ContactForm';
 import { RetroBackground } from './RetroBackground';
 import { TypewriterText } from './TypewriterText';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { trackResourceClick } from '../utils/analytics';
 
 export function KnowledgeStash() {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
@@ -357,6 +358,7 @@ export function KnowledgeStash() {
                 className="retro-border bg-card hover:bg-gray-300 transition-all duration-300 
                           cursor-pointer group transform hover:scale-[1.02] block"
                 onClick={() => {
+                  trackResourceClick(resource.title, 'knowledge');
                   window.open(resource.url, '_blank');
                 }}
               >

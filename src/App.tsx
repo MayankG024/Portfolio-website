@@ -7,15 +7,47 @@ import { AboutPage } from './components/AboutPage';
 import { SocialFooter } from './components/SocialFooter';
 import { WelcomeScreen } from './components/WelcomeScreen';
 import { LoadingScreen } from './components/LoadingScreen';
+import { initGA, trackPageView, trackNavigation } from './utils/analytics';
+import { useScrollTracking } from './hooks/useScrollTracking';
 
 export default function App() {
   const [currentSection, setCurrentSection] = useState('home');
   const [showWelcome, setShowWelcome] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Scroll to top whenever section changes
+  // Handle section changes with analytics tracking
+  const handleSectionChange = (newSection: string) => {
+    const previousSection = currentSection;
+    setCurrentSection(newSection);
+    
+    // Track navigation between sections
+    if (previousSection !== newSection) {
+      trackNavigation(previousSection, newSection);
+    }
+  };
+
+  // Initialize Google Analytics on app start
+  useEffect(() => {
+    initGA();
+    trackPageView('home', 'Mayank Gupta - Portfolio');
+  }, []);
+
+  // Enable scroll depth tracking
+  useScrollTracking();
+
+  // Track section changes and scroll to top
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Track page view for each section
+    const sectionTitles = {
+      home: 'Home - Mayank Gupta',
+      about: 'About - Mayank Gupta', 
+      knowledge: 'Knowledge Stash - Mayank Gupta',
+      blogs: 'Blogs - Mayank Gupta'
+    };
+    
+    trackPageView(currentSection, sectionTitles[currentSection as keyof typeof sectionTitles]);
   }, [currentSection]);
 
   // Detect scrolling for enhanced scrollbar effects
@@ -59,7 +91,7 @@ export default function App() {
   const renderCurrentSection = () => {
     switch (currentSection) {
       case 'home':
-        return <HomePage key="home" onSectionChange={setCurrentSection} />;
+        return <HomePage key="home" onSectionChange={handleSectionChange} />;
       case 'blogs':
         return <BlogsPage key="blogs" />;
       case 'knowledge':
@@ -67,7 +99,7 @@ export default function App() {
       case 'about':
         return <AboutPage key="about" />;
       default:
-        return <HomePage key="home-default" onSectionChange={setCurrentSection} />;
+        return <HomePage key="home-default" onSectionChange={handleSectionChange} />;
     }
   };
 
@@ -75,7 +107,7 @@ export default function App() {
     <div className="min-h-screen bg-background transition-all duration-500 ease-in-out opacity-100">
       <Navigation 
         currentSection={currentSection} 
-        onSectionChange={setCurrentSection} 
+        onSectionChange={handleSectionChange} 
       />
       <main>
         {renderCurrentSection()}

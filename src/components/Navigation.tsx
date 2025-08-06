@@ -1,10 +1,23 @@
 
+import { trackEvent } from '../utils/analytics';
+
 export interface NavigationProps {
   currentSection: string;
   onSectionChange: (section: string) => void;
 }
 
 export function Navigation({ currentSection, onSectionChange }: NavigationProps) {
+  
+  const handleNavClick = (section: string, buttonName: string) => {
+    // Track navigation button clicks
+    trackEvent('navigation_click', {
+      button_name: buttonName,
+      target_section: section,
+      current_section: currentSection,
+    });
+    onSectionChange(section);
+  };
+
   return (
     <nav className="w-full border-b-2 border-foreground bg-background sticky top-0 z-50">
       <div className="w-full px-3 sm:px-6 py-3 sm:py-4">
@@ -13,7 +26,7 @@ export function Navigation({ currentSection, onSectionChange }: NavigationProps)
           <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
             <h1 
               className="text-sm sm:text-heading cursor-pointer hover:text-muted-foreground transition-all duration-200 ease-in-out tracking-[0.05em] hover:animate-bounce hover:transform hover:scale-105 text-foreground"
-              onClick={() => onSectionChange('home')}
+              onClick={() => handleNavClick('home', 'MAYANK.EXE Logo')}
             >
               ► MAYANK.EXE
             </h1>
@@ -31,7 +44,7 @@ export function Navigation({ currentSection, onSectionChange }: NavigationProps)
                   ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transform translate-x-0.5 translate-y-0.5' 
                   : 'bg-background text-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-muted hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-0.5 active:translate-y-0.5'
               }`}
-              onClick={() => onSectionChange('home')}
+              onClick={() => handleNavClick('home', 'HOME Button')}
             >
               HOME
             </button>
@@ -43,7 +56,7 @@ export function Navigation({ currentSection, onSectionChange }: NavigationProps)
                   ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transform translate-x-0.5 translate-y-0.5' 
                   : 'bg-background text-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-muted hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-0.5 active:translate-y-0.5'
               }`}
-              onClick={() => onSectionChange('blogs')}
+              onClick={() => handleNavClick('blogs', 'BLOGS Button')}
             >
               BLOGS
             </button>
@@ -55,7 +68,7 @@ export function Navigation({ currentSection, onSectionChange }: NavigationProps)
                   ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transform translate-x-0.5 translate-y-0.5' 
                   : 'bg-background text-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-muted hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-0.5 active:translate-y-0.5'
               }`}
-              onClick={() => onSectionChange('knowledge')}
+              onClick={() => handleNavClick('knowledge', 'KNOWLEDGE Button')}
             >
               <span className="hidden sm:inline">KNOWLEDGE</span>
               <span className="sm:hidden">KNOW</span>
@@ -68,7 +81,7 @@ export function Navigation({ currentSection, onSectionChange }: NavigationProps)
                   ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transform translate-x-0.5 translate-y-0.5' 
                   : 'bg-background text-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-muted hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-0.5 active:translate-y-0.5'
               }`}
-              onClick={() => onSectionChange('about')}
+              onClick={() => handleNavClick('about', 'ABOUT Button')}
             >
               <span className="hidden sm:inline">ABOUT ME</span>
               <span className="sm:hidden">ABOUT</span>
