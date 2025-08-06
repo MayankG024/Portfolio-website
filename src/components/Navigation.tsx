@@ -1,0 +1,81 @@
+
+export interface NavigationProps {
+  currentSection: string;
+  onSectionChange: (section: string) => void;
+}
+
+export function Navigation({ currentSection, onSectionChange }: NavigationProps) {
+  return (
+    <nav className="w-full border-b-2 border-foreground bg-background sticky top-0 z-50">
+      <div className="w-full px-3 sm:px-6 py-3 sm:py-4">
+        <div className="flex items-center justify-between w-full">
+          {/* Left side - Logo and version */}
+          <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
+            <h1 
+              className="text-sm sm:text-heading cursor-pointer hover:text-muted-foreground transition-all duration-200 ease-in-out tracking-[0.05em] hover:animate-bounce hover:transform hover:scale-105 text-foreground"
+              onClick={() => onSectionChange('home')}
+            >
+              ► MAYANK.EXE
+            </h1>
+            
+            <span className="text-green-800 text-[8px] sm:text-tiny tracking-[0.04em]">v1.0.0</span>
+          </div>
+          
+          {/* Right side - Navigation buttons */}
+          <div className="flex items-center space-x-1 sm:space-x-3 flex-shrink-0">
+            <button
+              className={`px-2 sm:px-4 py-1 sm:py-2 text-[8px] sm:text-tiny tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
+                         border-2 border-black min-h-[32px] min-w-[44px]
+                         ${
+                currentSection === 'home' 
+                  ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transform translate-x-0.5 translate-y-0.5' 
+                  : 'bg-background text-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-muted hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-0.5 active:translate-y-0.5'
+              }`}
+              onClick={() => onSectionChange('home')}
+            >
+              HOME
+            </button>
+            <button
+              className={`px-2 sm:px-4 py-1 sm:py-2 text-[8px] sm:text-tiny tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
+                         border-2 border-black min-h-[32px] min-w-[44px]
+                         ${
+                currentSection === 'blogs' 
+                  ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transform translate-x-0.5 translate-y-0.5' 
+                  : 'bg-background text-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-muted hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-0.5 active:translate-y-0.5'
+              }`}
+              onClick={() => onSectionChange('blogs')}
+            >
+              BLOGS
+            </button>
+            <button
+              className={`px-1 sm:px-4 py-1 sm:py-2 text-[7px] sm:text-[9px] tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
+                         border-2 border-black min-h-[32px] min-w-[44px]
+                         ${
+                currentSection === 'knowledge' 
+                  ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transform translate-x-0.5 translate-y-0.5' 
+                  : 'bg-background text-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-muted hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-0.5 active:translate-y-0.5'
+              }`}
+              onClick={() => onSectionChange('knowledge')}
+            >
+              <span className="hidden sm:inline">KNOWLEDGE</span>
+              <span className="sm:hidden">KNOW</span>
+            </button>
+            <button
+              className={`px-1 sm:px-4 py-1 sm:py-2 text-[7px] sm:text-[9px] tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
+                         border-2 border-black min-h-[32px] min-w-[44px]
+                         ${
+                currentSection === 'about' 
+                  ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transform translate-x-0.5 translate-y-0.5' 
+                  : 'bg-background text-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-muted hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-0.5 active:translate-y-0.5'
+              }`}
+              onClick={() => onSectionChange('about')}
+            >
+              <span className="hidden sm:inline">ABOUT ME</span>
+              <span className="sm:hidden">ABOUT</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
