@@ -1,5 +1,6 @@
 // Google Analytics 4 (GA4) configuration and utilities
 
+// Declare global types for Google Analytics
 declare global {
   interface Window {
     gtag: (...args: any[]) => void;
@@ -124,6 +125,3 @@ export const trackTimeOnPage = (section: string, timeSpent: number) => {
     event_category: 'user_engagement',
   });
 };
-
-// Ensure this file is treated as a module
-export {};

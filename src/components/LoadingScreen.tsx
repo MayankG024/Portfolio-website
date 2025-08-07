@@ -17,7 +17,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
   ];
 
   useEffect(() => {
-    const duration = 1000; // 1 second total loading (much slower for full visibility)
+    const duration = 1700; // 1.7 seconds total loading (much slower for full visibility)
     const steps = 100;
     const stepDuration = duration / steps;
 

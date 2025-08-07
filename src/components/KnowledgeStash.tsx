@@ -290,13 +290,10 @@ export function KnowledgeStash() {
               <button
                 key={category}
                 className={`retro-border px-4 py-2 text-sm font-['Jersey_25'] tracking-wide
-                           transition-all duration-150 ease-in-out
-                           shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]
-                           hover:transform hover:-translate-x-1 hover:-translate-y-1
-                           active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-1 active:translate-y-1
+                           border-2 border-black transition-all duration-150 ease-in-out
                            ${selectedCategory === category 
-                             ? 'bg-green-400 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transform translate-x-1 translate-y-1' 
-                             : 'bg-white text-black hover:bg-gray-300'
+                             ? 'bg-green-400 text-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transform translate-x-0.5 translate-y-0.5' 
+                             : 'bg-white text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:transform active:translate-x-0.5 active:translate-y-0.5'
                            }`}
                 onClick={() => setSelectedCategory(category)}
               >
@@ -355,8 +352,13 @@ export function KnowledgeStash() {
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="retro-border bg-card hover:bg-gray-300 transition-all duration-300 
-                          cursor-pointer group transform hover:scale-[1.02] block"
+                className="retro-border bg-card border-2 border-black transition-all duration-150 ease-in-out
+                          cursor-pointer group block
+                          shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                          hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                          hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                          active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                          active:transform active:translate-x-0.5 active:translate-y-0.5"
                 onClick={() => {
                   trackResourceClick(resource.title, 'knowledge');
                   window.open(resource.url, '_blank');
@@ -365,8 +367,13 @@ export function KnowledgeStash() {
                 {cardContent}
               </a>
             ) : (
-              <div key={index} className="retro-border bg-card hover:bg-gray-300 transition-all duration-300 
-                                         cursor-pointer group transform hover:scale-[1.02]">
+              <div key={index} className="retro-border bg-card border-2 border-black transition-all duration-150 ease-in-out
+                                         cursor-pointer group
+                                         shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                                         hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                                         hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                                         active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                                         active:transform active:translate-x-0.5 active:translate-y-0.5">
                 {cardContent}
               </div>
             );
@@ -385,43 +392,67 @@ export function KnowledgeStash() {
           <h2 className="text-lg md:text-xl font-bold mb-6 text-black font-['Press_Start_2P'] 
                          tracking-wider leading-relaxed">VAULT STATISTICS</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div className="retro-border p-4 bg-white text-center hover:bg-gray-300 hover:transform 
-                           hover:-translate-y-2 hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="retro-border p-4 bg-white text-center border-2 border-black transition-all duration-150 ease-in-out cursor-pointer
+                           shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                           hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                           hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                           active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                           active:transform active:translate-x-0.5 active:translate-y-0.5">
               <div className="text-xl md:text-2xl font-bold text-black font-['Press_Start_2P'] mb-2">
                 {resources.filter(r => r.category === 'BOOKS').length}
               </div>
               <div className="text-sm text-gray-600 font-['Jersey_25'] tracking-wide">BOOKS</div>
             </div>
-            <div className="retro-border p-4 bg-white text-center hover:bg-gray-300 hover:transform 
-                           hover:-translate-y-2 hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="retro-border p-4 bg-white text-center border-2 border-black transition-all duration-150 ease-in-out cursor-pointer
+                           shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                           hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                           hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                           active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                           active:transform active:translate-x-0.5 active:translate-y-0.5">
               <div className="text-xl md:text-2xl font-bold text-black font-['Press_Start_2P'] mb-2">
                 {resources.filter(r => r.category === 'TOOLS').length}
               </div>
               <div className="text-sm text-gray-600 font-['Jersey_25'] tracking-wide">TOOLS</div>
             </div>
-            <div className="retro-border p-4 bg-white text-center hover:bg-gray-300 hover:transform 
-                           hover:-translate-y-2 hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="retro-border p-4 bg-white text-center border-2 border-black transition-all duration-150 ease-in-out cursor-pointer
+                           shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                           hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                           hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                           active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                           active:transform active:translate-x-0.5 active:translate-y-0.5">
               <div className="text-xl md:text-2xl font-bold text-black font-['Press_Start_2P'] mb-2">
                 {resources.filter(r => r.category === 'ARTICLES').length}
               </div>
               <div className="text-sm text-gray-600 font-['Jersey_25'] tracking-wide">ARTICLES</div>
             </div>
-            <div className="retro-border p-4 bg-white text-center hover:bg-gray-300 hover:transform 
-                           hover:-translate-y-2 hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="retro-border p-4 bg-white text-center border-2 border-black transition-all duration-150 ease-in-out cursor-pointer
+                           shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                           hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                           hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                           active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                           active:transform active:translate-x-0.5 active:translate-y-0.5">
               <div className="text-xl md:text-2xl font-bold text-black font-['Press_Start_2P'] mb-2">
                 {resources.filter(r => r.category === 'VIDEOS').length}
               </div>
               <div className="text-sm text-gray-600 font-['Jersey_25'] tracking-wide">VIDEOS</div>
             </div>
-            <div className="retro-border p-4 bg-white text-center hover:bg-gray-300 hover:transform 
-                           hover:-translate-y-2 hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="retro-border p-4 bg-white text-center border-2 border-black transition-all duration-150 ease-in-out cursor-pointer
+                           shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                           hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                           hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                           active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                           active:transform active:translate-x-0.5 active:translate-y-0.5">
               <div className="text-xl md:text-2xl font-bold text-black font-['Press_Start_2P'] mb-2">
                 {resources.filter(r => r.category === 'MUSIC').length}
               </div>
               <div className="text-sm text-gray-600 font-['Jersey_25'] tracking-wide">MUSIC</div>
             </div>
-            <div className="retro-border p-4 bg-white text-center hover:bg-gray-300 hover:transform 
-                           hover:-translate-y-2 hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="retro-border p-4 bg-white text-center border-2 border-black transition-all duration-150 ease-in-out cursor-pointer
+                           shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                           hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                           hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                           active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                           active:transform active:translate-x-0.5 active:translate-y-0.5">
               <div className="text-xl md:text-2xl font-bold text-black font-['Press_Start_2P'] mb-2">
                 {resources.length}
               </div>
