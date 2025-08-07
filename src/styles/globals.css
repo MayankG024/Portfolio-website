@@ -10,8 +10,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   --font-size: 16px; /* Increased base font size for better readability */
   --background: 60 56% 91%; /* beige */
