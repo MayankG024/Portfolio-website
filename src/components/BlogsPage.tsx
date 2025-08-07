@@ -73,13 +73,23 @@ the conclusion, Religion guides when science reaches its limit. it won’t give 
       content: `
 Our world has rapidly progressed from information scarce to information overload in matter of few decades. we’re bombarded with tons of data about relevant and majorly non relevant topics day and night leaving us “fatigued” by the same. Our human brains have evolved in a way to learn and process information about a particular concept faster rather than store information about a variety of topics at once. its like a computer that processes a handful of tasks very efficiently rather an LLM which is trained across countless domains with some proficiency of each one of them. 
 
-  In today's day and age focus or attention is all you need ( throwback to the transformer research paper) . Trillion dollar companies drive major portions of their revenue by maximizing the amount of attention they can grab from their consumers. everybody realizes the importance of intense focus (at least most who’s work isn’t physical) yet fail to achieve it. to reach peak expertise one requires to put in somewhere around 10k hours and to do so you need to focus!
+ In todays day and age focus or attention is all you need ( throwback to the transformer research paper) . Trillion dollar companies drive major portions of their revenue by maximizing the amount of attention they can grab from their consumers. everybody realizes the importance of intense focus (at least most who’s work isn’t physical) yet fail to achieve it. to reach peak expertise one requires to put in somewhere around 10k hours and to do so you need to focus! humans are capable of focusing at a single task at a time, if you have tried to multitask its just an illusion of control.
 
 let us cut to the chase and see what it takes 1) physiologically and 2) psychologically to attain peak focus.
 
-the physiological factors are basically precursor, things you need to figure out if you’re being serious. Sleep, hydration and exercise are three main pillars of it. all these help the brain to function optimally we all know the benefits, sleep flushes the synovial fluid of the brain does memory consolidation etc. I am a really light sleeper and I've had sleep problems many times & i really wish this wasn’t the case because i have felt the effects when you don’t get sufficient of it.  
+the physiological factors are basically precursor, things you need to figure out if you’re being serious. Sleep, hydration and exercise are three main pillars of it. all these help the brain to function optimally we all know the benefits, sleep flushes the synovial fluid of the brain, does memory consolidation etc. I am a really light sleeper and I've had sleep problems many times & i really wish this wasn’t the case because i have felt the effects when you don’t get sufficient of it.  
 
-Protein rich foods and the ones which have low glycemic index that is they release energy in a sustained manner are essential.
+Protein rich foods and the ones which have low glycemic index that is they release energy in a sustained manner are essential. Ideally meditation, mindful one significantly improves focus.
+
+Jumping over to the more interesting bit that are the psychological factors which determine our focus.
+
+I feel that we are focused only in these two situations, when we are either curious or out of compulsion. Genuine curiosity hence becomes an important factor. when someone is genuinely curious in what they are studying or working upon, focus comes in effortlessly, you’re in a state of flow. Basically when you have the option, work upon the things that tickles you the most. 
+
+The environment you work in is also crucial, a cluttered workspace reflects the noise in your work too. declutter. even the way up dress up plays a role, recall when you’re dressed up formal with full bells and whistle you automatically feel productive. that is real. 
+
+According to Andrew Hubermann, listening to non lyrical or classic music before the session also improves focus. I have tried it and it works.
+
+bonus tip - you might me already pretty good at it, but remember to take frequent breaks to maintain peak performance.  :)
       `
     },
     {
@@ -206,84 +216,6 @@ In the modern world, the lines are increasingly blurred. A UX designer, for exam
 This convergence is visible in fields like game development, architecture, and product design — where creative vision must meet technical implementation.
       `
     },
-    {
-      title: "THE FUTURE OF WEB DEVELOPMENT",
-      description: "Emerging trends and technologies that will shape how we build for the web in the coming years.",
-      category: "DEV",
-      readTime: "9 MIN",
-      date: "2024.08.30",
-      level: "★★★☆☆",
-      content: `
-# The Future of Web Development
-
-The web development landscape is constantly evolving. Here are the key trends and technologies that will shape our industry in the coming years.
-
-## Emerging Technologies
-
-### WebAssembly (WASM)
-- Near-native performance in browsers
-- Support for multiple programming languages
-- Enabling complex applications on the web
-- Growing ecosystem and tooling
-
-### Progressive Web Apps (PWAs)
-- Bridge between web and native apps
-- Offline functionality and push notifications
-- Improved performance and user experience
-- Wider browser support and adoption
-
-## Development Paradigms
-
-### Edge Computing
-- Reduced latency through geographic distribution
-- Better performance for global users
-- New hosting and deployment strategies
-- Integration with CDNs and serverless functions
-
-### AI-Assisted Development
-- Code generation and completion
-- Automated testing and debugging
-- Design to code conversion
-- Intelligent documentation
-
-## Framework Evolution
-
-### Meta-Frameworks
-- Full-stack solutions (Next.js, SvelteKit, Nuxt)
-- Built-in optimizations and best practices
-- Simplified deployment and scaling
-- Better developer experience
-
-### Component-Driven Development
-- Design systems and component libraries
-- Micro-frontends architecture
-- Reusable and composable UIs
-- Cross-framework compatibility
-
-## Performance and User Experience
-
-### Core Web Vitals
-- Performance as a ranking factor
-- User-centric metrics
-- Automated monitoring and optimization
-- Impact on business metrics
-
-### Accessibility First
-- Inclusive design principles
-- Automated accessibility testing
-- Legal requirements and compliance
-- Better tools and frameworks
-
-## Preparing for the Future
-
-1. **Stay Curious**: Continuously learn new technologies
-2. **Focus on Fundamentals**: Strong basics never go out of style
-3. **User-Centric Thinking**: Always prioritize user experience
-4. **Community Engagement**: Participate in the developer community
-
-The future of web development is exciting and full of opportunities. Embrace change, but remember that good engineering principles remain constant.
-      `
-    }
   ];
 
   // Individual animations for each blog post
@@ -455,8 +387,13 @@ The future of web development is exciting and full of opportunities. Embrace cha
                 
                 {/* Blog card - full width list item */}
                 <article 
-                  className="retro-border bg-card hover:bg-green-900/20 transition-all duration-300 
-                             cursor-pointer group transform hover:scale-[1.02] w-full"
+                  className="retro-border bg-card border-2 border-black transition-all duration-150 ease-in-out
+                             cursor-pointer group w-full
+                             shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                             hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                             hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                             active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                             active:transform active:translate-x-0.5 active:translate-y-0.5"
                   onClick={() => openBlog(post)}
                 >
                   <div className="p-6">

@@ -222,7 +222,12 @@ export function HomePage({ onSectionChange }: HomePageProps) {
               <button
                 key={item.id}
                 onClick={() => onSectionChange(item.id)}
-                className={`retro-border w-full p-4 sm:p-6 text-left group transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-lg bg-white hover:bg-gray-50`}
+                className={`retro-border w-full p-4 sm:p-6 text-left group transition-all duration-150 ease-in-out border-2 border-black bg-white
+                           shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                           hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                           hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                           active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                           active:transform active:translate-x-0.5 active:translate-y-0.5`}
               >
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-2 sm:space-y-0">
                   <span className="text-sm sm:text-lg md:text-xl font-['Press_Start_2P'] tracking-wide text-black">{item.label}</span>
@@ -246,7 +251,12 @@ export function HomePage({ onSectionChange }: HomePageProps) {
                          tracking-wider leading-relaxed text-black">PLAYER STATS</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {stats.map((stat, index) => (
-              <div key={index} className="retro-border p-3 sm:p-4 transition-all duration-300 ease-in-out cursor-pointer hover:transform hover:-translate-y-2 hover:shadow-lg bg-white hover:bg-gray-50">
+              <div key={index} className="retro-border p-3 sm:p-4 transition-all duration-150 ease-in-out cursor-pointer border-2 border-black bg-white
+                                         shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                                         hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                                         hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                                         active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                                         active:transform active:translate-x-0.5 active:translate-y-0.5">
                 <div className="text-sm sm:text-base text-green-600 mb-2 font-['Jersey_25'] tracking-wide">{stat.label}</div>
                 <div className="text-xs sm:text-sm md:text-base font-['Press_Start_2P'] tracking-wide break-words text-black">{stat.value}</div>
               </div>
@@ -266,7 +276,12 @@ export function HomePage({ onSectionChange }: HomePageProps) {
           <h2 className="text-base sm:text-lg md:text-xl font-bold mb-6 sm:mb-8 font-['Press_Start_2P'] 
                          tracking-wider leading-relaxed text-left text-black">EXPERIENCE LOG</h2>
           <div className="space-y-4">
-            <div className="retro-border p-4 bg-background hover:bg-green-900/20 transition-colors duration-300">
+            <div className="retro-border p-4 bg-background border-2 border-black transition-all duration-150 ease-in-out cursor-pointer
+                           shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 
+                           hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                           hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 
+                           active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                           active:transform active:translate-x-0.5 active:translate-y-0.5">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 space-y-2 sm:space-y-0">
                 <div className="flex-1 text-left">
                   <h3 className="font-['Press_Start_2P'] text-sm sm:text-base mb-2 tracking-wider text-left text-black">
@@ -290,7 +305,7 @@ export function HomePage({ onSectionChange }: HomePageProps) {
               </p>
             </div>
             
-            <div className="retro-border p-4 bg-background hover:bg-green-900/20 transition-colors duration-300">
+            <div className="retro-border p-4 bg-background shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-200">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 space-y-2 sm:space-y-0">
                 <div className="flex-1 text-left">
                   <h3 className="font-['Press_Start_2P'] text-sm sm:text-base mb-2 tracking-wider text-left text-black">
@@ -314,7 +329,7 @@ export function HomePage({ onSectionChange }: HomePageProps) {
               </p>
             </div>
             
-            <div className="retro-border p-4 bg-background hover:bg-green-900/20 transition-colors duration-300">
+            <div className="retro-border p-4 bg-background shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-300 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:transform hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-200">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 space-y-2 sm:space-y-0">
                 <div className="flex-1 text-left">
                   <h3 className="font-['Press_Start_2P'] text-sm sm:text-base mb-2 tracking-wider text-left text-black">
