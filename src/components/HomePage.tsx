@@ -160,6 +160,7 @@ export function HomePage({ onSectionChange }: HomePageProps) {
 `}
             </div>
           </div>
+          </div>
         </div>
 
         {/* Typewriter Effect for Welcome */}
