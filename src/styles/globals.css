@@ -1,0 +1,959 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.jersey-25-regular {
+  font-family: "Jersey 25", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-size: 16px; /* Increased base font size for better readability */
+  --background: 60 56% 91%; /* beige */
+  --foreground: 0 0% 0%; /* black */
+  --card: 60 33% 94%;
+  --card-foreground: 0 0% 0%;
+  --popover: 60 56% 91%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 0 0% 0%;
+  --primary-foreground: 60 56% 91%;
+  --secondary: 60 33% 85%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 60 33% 88%;
+  --muted-foreground: 0 0% 20%;
+  --accent: 60 33% 82%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 100% 27%;
+  --destructive-foreground: 60 56% 91%;
+  --border: 0 0% 0%;
+  --input: 0 0% 0% / 0;
+  --ring: 0 0% 0%;
+  --chart-1: 0 0% 20%;
+  --chart-2: 0 0% 40%;
+  --chart-3: 0 0% 60%;
+  --chart-4: 0 0% 29%;
+  --chart-5: 0 0% 10%;
+  --radius: 0px;
+}
+
+.dark {
+  /* Base color switched to #000000 (pure black) */
+  --background: 0 0% 0%; /* #000000 */
+  --foreground: 45 40% 80%; /* Beige color */
+  --card: 0 0% 6%; /* Slightly lighter than background */
+  --card-foreground: 45 40% 80%; /* Beige color */
+  --popover: 0 0% 0%; /* Match background */
+  --popover-foreground: 45 40% 80%; /* Beige color */
+  --primary: 45 40% 80%; /* Beige color */
+  --primary-foreground: 0 0% 0%; /* Match new background */
+  --secondary: 0 0% 8%; /* Slightly lighter secondary */
+  --secondary-foreground: 45 40% 80%; /* Beige color */
+  --muted: 0 0% 10%; /* Slightly lighter muted */
+  --muted-foreground: 45 30% 60%; /* Muted beige */
+  --accent: 0 0% 14%; /* Slightly lighter accent */
+  --accent-foreground: 45 40% 80%; /* Beige color */
+  --destructive: 0 89% 63%;
+  --destructive-foreground: 0 0% 0%; /* Match new background */
+  --border: 45 40% 80%; /* Beige borders */
+  --input: 0 0% 7%; /* Slightly lighter inputs */
+  --ring: 45 40% 80%; /* Beige ring */
+  --chart-1: 45 40% 80%;
+  --chart-2: 45 30% 60%;
+  --chart-3: 45 20% 40%;
+  --chart-4: 45 35% 67%;
+  --chart-5: 45 45% 87%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Press Start 2P', monospace;
+    line-height: 1.8; /* Improved line height for readability */
+    font-size: 14px; /* Comfortable base reading size */
+  }
+}
+
+/* Enhanced typography utilities for better readability */
+@layer components {
+  .text-display {
+    font-size: 24px;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+  }
+  
+  .text-heading {
+    font-size: 20px;
+    line-height: 1.7;
+    letter-spacing: 0.06em;
+    margin-bottom: 1.25rem;
+  }
+  
+  .text-subheading {
+    font-size: 16px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+  
+  .text-body {
+    font-size: 14px;
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+  
+  .text-small {
+    font-size: 12px;
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+  }
+  
+  .text-tiny {
+    font-size: 10px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+  
+  .text-micro {
+    font-size: 8px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Retro Gaming Scrollbar Styles */
+@layer base {
+  /* Modern browsers with webkit support */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #22c55e #000000; /* Green thumb, black track */
+  }
+
+  /* Webkit scrollbars (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000000;
+    border: 2px solid #22c55e;
+    border-radius: 0px; /* Keep it retro with sharp corners */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+    border: 2px solid #000000;
+    border-radius: 0px; /* Sharp corners for retro feel */
+    box-shadow: inset 0 0 0 1px #22c55e;
+    transition: all 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #16a34a 0%, #15803d 50%, #166534 100%);
+    box-shadow: inset 0 0 0 1px #16a34a, 0 0 8px rgba(34, 197, 94, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    box-shadow: inset 0 0 0 1px #000000, 0 0 4px rgba(0, 0, 0, 0.8);
+    border: 2px solid #22c55e;
+  }
+
+  /* Enhanced scrollbar behavior during scroll actions */
+  body.is-scrolling ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    border: 2px solid #22c55e;
+    box-shadow: 
+      inset 0 0 0 1px #22c55e,
+      0 0 8px rgba(34, 197, 94, 0.8),
+      0 0 16px rgba(34, 197, 94, 0.4);
+    transition: all 0.1s ease;
+  }
+
+  body.is-scrolling ::-webkit-scrollbar-track {
+    background: #000000;
+    border: 2px solid #22c55e;
+    box-shadow: inset 0 0 8px rgba(34, 197, 94, 0.2);
+  }
+
+  body.is-scrolling ::-webkit-scrollbar-button:vertical:start:decrement,
+  body.is-scrolling ::-webkit-scrollbar-button:vertical:end:increment {
+    background-color: #000000;
+    border: 2px solid #22c55e;
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #000000;
+    border: 2px solid #22c55e;
+  }
+
+  /* Retro gaming arrow buttons for scrollbar */
+  ::-webkit-scrollbar-button {
+    background: #000000;
+    border: 2px solid #22c55e;
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  ::-webkit-scrollbar-button:hover {
+    background: #22c55e;
+    box-shadow: 0 0 4px rgba(34, 197, 94, 0.6);
+  }
+
+  ::-webkit-scrollbar-button:active {
+    background: #16a34a;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* UP Arrow - Top of vertical scrollbar */
+  ::-webkit-scrollbar-button:vertical:start:decrement {
+    background: #000000;
+    border: 2px solid #22c55e;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2322c55e' viewBox='0 0 24 24'%3E%3Cpath d='M7 14l5-5 5 5z'/%3E%3C/svg%3E");
+    background-size: 12px 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  ::-webkit-scrollbar-button:vertical:start:decrement:hover {
+    background-color: #22c55e;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 24 24'%3E%3Cpath d='M7 14l5-5 5 5z'/%3E%3C/svg%3E");
+  }
+
+  ::-webkit-scrollbar-button:vertical:start:decrement:active {
+    background-color: #16a34a;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 24 24'%3E%3Cpath d='M7 14l5-5 5 5z'/%3E%3C/svg%3E");
+  }
+
+  /* DOWN Arrow - Bottom of vertical scrollbar */
+  ::-webkit-scrollbar-button:vertical:end:increment {
+    background: #000000;
+    border: 2px solid #22c55e;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2322c55e' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-size: 12px 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  ::-webkit-scrollbar-button:vertical:end:increment:hover {
+    background-color: #22c55e;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  }
+
+  ::-webkit-scrollbar-button:vertical:end:increment:active {
+    background-color: #16a34a;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  }
+
+  ::-webkit-scrollbar-button:horizontal:start:decrement {
+    background-image: linear-gradient(45deg, transparent 40%, #22c55e 40%, #22c55e 60%, transparent 60%);
+    background-size: 8px 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  ::-webkit-scrollbar-button:horizontal:end:increment {
+    background-image: linear-gradient(225deg, transparent 40%, #22c55e 40%, #22c55e 60%, transparent 60%);
+    background-size: 8px 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+/**
+ * Retro game typography with pixelated font and improved readability
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.8;
+      letter-spacing: 0.1em;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: 0.08em;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: 0.06em;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    h4 {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    p:not([class*="font-"]):not([class*="jersey-"]) {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.8;
+      letter-spacing: 0.04em;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    label {
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: 0.04em;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    button {
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: 0.03em;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    input, textarea {
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: 0.03em;
+      font-family: 'Press Start 2P', monospace;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Retro game animations */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes typewriter-blink {
+  0%, 40% { opacity: 1; }
+  41%, 100% { opacity: 0; }
+}
+
+@keyframes mario-block-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes mario-block-spin {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+@keyframes mario-block-pulse {
+  0%, 100% { opacity: 0.3; box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.1); }
+}
+
+@keyframes mario-coin-bounce {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  25% { transform: translateY(-12px) scale(1.1); }
+  50% { transform: translateY(-20px) scale(1.2); }
+  75% { transform: translateY(-12px) scale(1.1); }
+}
+
+@keyframes celestial-gentle-bounce {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-1px) scale(1.01); }
+}
+
+.retro-blink {
+  animation: blink 1s infinite;
+}
+
+.typewriter-cursor {
+  animation: typewriter-blink 0.8s infinite;
+  color: hsl(var(--foreground));
+  font-weight: bold;
+}
+
+/* Mario-style block elements */
+.mario-block {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #654321 100%);
+  border: 3px solid #5D4037;
+  border-radius: 4px;
+  animation: mario-block-float 6s ease-in-out infinite;
+  opacity: 0.15;
+  z-index: 0;
+  filter: blur(0.5px);
+  transition: all 0.3s ease;
+}
+
+.mario-block::before {
+  content: '?';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFD700;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  text-shadow: 2px 2px 0 #B8860B, -1px -1px 0 #FFF8DC;
+  opacity: 0.8;
+}
+
+.mario-block.active {
+  animation: mario-block-pulse 3s ease-in-out infinite, mario-block-float 6s ease-in-out infinite;
+  opacity: 0.25;
+  filter: blur(0px);
+}
+
+.mario-block.spinning {
+  animation: mario-block-spin 2s linear infinite, mario-block-float 6s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+.mario-coin {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 30% 30%, #FFD700 20%, #FFA500 50%, #FF8C00 80%);
+  border: 2px solid #B8860B;
+  border-radius: 50%;
+  animation: mario-coin-bounce 4s ease-in-out infinite;
+  opacity: 0.2;
+  z-index: 0;
+  filter: blur(0.5px);
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Retro Scrollbar Utility Classes */
+@layer utilities {
+  /* Thin retro scrollbar variant */
+  .scrollbar-retro-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #22c55e #1a1a1a;
+  }
+
+  .scrollbar-retro-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-retro-thin::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border: 1px solid #22c55e;
+  }
+
+  .scrollbar-retro-thin::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+    border: 1px solid #000000;
+    transition: all 0.2s ease;
+  }
+
+  .scrollbar-retro-thin::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #16a34a 0%, #15803d 100%);
+    box-shadow: 0 0 4px rgba(34, 197, 94, 0.4);
+  }
+
+  .scrollbar-retro-thin::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+    border: 1px solid #22c55e;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Glowing scrollbar variant for special sections */
+  .scrollbar-retro-glow {
+    scrollbar-width: auto;
+    scrollbar-color: #22c55e #000000;
+  }
+
+  .scrollbar-retro-glow::-webkit-scrollbar {
+    width: 18px;
+    height: 18px;
+  }
+
+  .scrollbar-retro-glow::-webkit-scrollbar-track {
+    background: #000000;
+    border: 3px solid #22c55e;
+    box-shadow: inset 0 0 8px rgba(34, 197, 94, 0.3);
+  }
+
+  .scrollbar-retro-glow::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+    border: 2px solid #000000;
+    box-shadow: 
+      inset 0 0 0 1px #22c55e,
+      0 0 12px rgba(34, 197, 94, 0.6),
+      0 0 20px rgba(34, 197, 94, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .scrollbar-retro-glow::-webkit-scrollbar-thumb:hover {
+    box-shadow: 
+      inset 0 0 0 1px #16a34a,
+      0 0 16px rgba(34, 197, 94, 0.8),
+      0 0 24px rgba(34, 197, 94, 0.5);
+  }
+
+  .scrollbar-retro-glow::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    border: 2px solid #22c55e;
+    box-shadow: 
+      inset 0 0 0 1px #000000,
+      0 0 20px rgba(0, 0, 0, 0.8),
+      0 0 32px rgba(34, 197, 94, 0.4);
+  }
+
+  /* Hidden scrollbar for clean sections */
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animated retro scrollbar with pulse effect */
+  .scrollbar-retro-pulse::-webkit-scrollbar-thumb {
+    animation: retro-scrollbar-pulse 2s ease-in-out infinite;
+  }
+}
+
+/* Retro scrollbar pulse animation */
+@keyframes retro-scrollbar-pulse {
+  0%, 100% { 
+    box-shadow: inset 0 0 0 1px #22c55e, 0 0 8px rgba(34, 197, 94, 0.4);
+  }
+  50% { 
+    box-shadow: inset 0 0 0 1px #16a34a, 0 0 16px rgba(34, 197, 94, 0.7);
+  }
+}
+
+.mario-coin::before {
+  content: '$';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #8B4513;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Background game elements container */
+.retro-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(245, 245, 220, 0.02) 0%,
+    rgba(240, 240, 208, 0.01) 50%,
+    rgba(245, 245, 220, 0.02) 100%
+  );
+}
+
+/* Ensure content stays above background */
+.retro-border {
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(1px);
+}
+
+/* Custom retro scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+  border: 2px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border: 2px solid var(--border);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--background);
+  border: 2px solid var(--border);
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: auto;
+  scrollbar-color: var(--muted) var(--background);
+}
+
+/* Pixelated borders */
+.pixel-border {
+  border: 2px solid var(--border);
+  box-shadow: 
+    inset 0 0 0 2px var(--background),
+    0 0 0 4px var(--border);
+}
+
+.pixel-button {
+  border: 2px solid var(--border);
+  background: var(--background);
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.pixel-button:hover {
+  background: var(--muted);
+  transform: translate(-1px, -1px);
+  box-shadow: 1px 1px 0 var(--border);
+}
+
+.pixel-button:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+/* Mechanical switch button - pressed state */
+.pixel-button-pressed {
+  border: 2px solid var(--border);
+  background: var(--foreground);
+  color: var(--background);
+  transform: translate(1px, 1px);
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.pixel-button-pressed:hover {
+  background: var(--foreground);
+  color: var(--background);
+  transform: translate(1px, 1px);
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Welcome screen specific styles */
+.welcome-enter-button {
+  cursor: pointer;
+  user-select: none;
+  transform-origin: center;
+}
+
+.welcome-enter-button:active {
+  transform: scale(0.98);
+}
+
+/* Enhanced pixelated borders with old-school game aesthetic */
+.retro-border {
+  border: 4px solid #000000;
+  box-shadow: 
+    inset 0 0 0 2px var(--background),
+    inset 4px 4px 0 2px #333333,
+    inset -4px -4px 0 2px #666666,
+    0 0 0 2px #000000,
+    4px 4px 0 2px #000000,
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  background: var(--card);
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(1px);
+}
+
+/* Dark mode retro-border */
+.dark .retro-border {
+  border: 4px solid hsl(var(--border)); /* Beige token for borders */
+  box-shadow: 
+    inset 0 0 0 2px var(--background),
+    inset 4px 4px 0 2px #8b7355,
+    inset -4px -4px 0 2px #f5e6ab,
+    0 0 0 2px hsl(var(--border)),
+    4px 4px 0 2px hsl(var(--border)),
+    0 4px 12px hsl(var(--border) / 0.2);
+}
+
+.retro-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid #000000;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dark mode border pseudo-element */
+.dark .retro-border::before {
+  border: 2px solid hsl(var(--border));
+}
+
+.retro-border::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: rgba(245, 245, 220, 0.95);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Dark mode adjusts inner overlay to match dark card color */
+.dark .retro-border::after {
+  background: hsl(var(--card) / 0.95);
+}
+
+/* Optimized Floating Batarang Animations - Reduced from 6 to 4 */
+@keyframes float-batarang-1 {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(45deg); opacity: 0.1; }
+  25% { transform: translateY(-10px) translateX(5px) rotate(65deg); opacity: 0.15; }
+  50% { transform: translateY(-5px) translateX(-3px) rotate(25deg); opacity: 0.08; }
+  75% { transform: translateY(8px) translateX(2px) rotate(55deg); opacity: 0.12; }
+}
+
+@keyframes float-batarang-2 {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(-30deg); opacity: 0.08; }
+  33% { transform: translateY(12px) translateX(-8px) rotate(-10deg); opacity: 0.14; }
+  66% { transform: translateY(-6px) translateX(4px) rotate(-50deg); opacity: 0.1; }
+}
+
+@keyframes float-batarang-3 {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(120deg); opacity: 0.12; }
+  20% { transform: translateY(-8px) translateX(-5px) rotate(140deg); opacity: 0.08; }
+  60% { transform: translateY(10px) translateX(6px) rotate(100deg); opacity: 0.15; }
+  80% { transform: translateY(-3px) translateX(-2px) rotate(130deg); opacity: 0.1; }
+}
+
+@keyframes float-batarang-4 {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(-45deg); opacity: 0.1; }
+  40% { transform: translateY(7px) translateX(3px) rotate(-25deg); opacity: 0.13; }
+  70% { transform: translateY(-9px) translateX(-4px) rotate(-65deg); opacity: 0.09; }
+}
+
+/* Golden Star Twinkling Animation */
+@keyframes gentle-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  25% { opacity: 0.7; transform: scale(1.1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
+  75% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.star-twinkle {
+  animation: gentle-twinkle 3s ease-in-out infinite;
+}
+
+/* Simple Black Scrollbar */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: black;
+}
+
+::-webkit-scrollbar-corner {
+  background: hsl(var(--background));
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: black hsl(var(--background));
+}
+
+/* Simple scrollbar for specific elements */
+.retro-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: black hsl(var(--background));
+}
+
+.retro-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.retro-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--card));
+}
+
+.retro-scrollbar::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+/* Mobile Optimization Styles */
+@media (max-width: 640px) {
+  /* Prevent horizontal scroll on mobile */
+  html {
+    overflow-x: hidden;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Adjust base font size for mobile readability */
+  :root {
+    --font-size: 14px;
+  }
+  
+  /* Mobile-friendly scrollbars - thinner and simpler */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #000000;
+    border: 1px solid #22c55e;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #22c55e;
+    border: 1px solid #000000;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #16a34a;
+  }
+  
+  /* Remove scrollbar arrows on mobile for more space */
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  
+  /* Adjust retro borders for mobile - smaller shadows */
+  .retro-border {
+    border: 2px solid #000000;
+    box-shadow: 
+      inset 0 0 0 1px var(--background),
+      inset 2px 2px 0 1px #333333,
+      inset -2px -2px 0 1px #666666,
+      0 0 0 1px #000000,
+      2px 2px 0 1px #000000,
+      0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Touch-friendly button sizing */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent text selection on mobile for UI elements */
+  .retro-border, nav, button {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Improve tap targets */
+  a, button, [role="button"] {
+    touch-action: manipulation;
+  }
+  
+  /* Optimize ASCII art for mobile viewing */
+  .ascii-art {
+    font-size: 6px !important;
+    line-height: 1.2;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* Tablet-specific optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    --font-size: 15px;
+  }
+  
+  /* Slightly larger touch targets for tablets */
+  button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* 3D Flip Animation for Profile Photo */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  button {
+    min-height: 40px;
+    min-width: 40px;
+  }
+}
+
+/* High DPI displays - improve text clarity */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .font-pixelated {
+    -webkit-font-smoothing: pixelated;
+    image-rendering: pixelated;
+  }
+}

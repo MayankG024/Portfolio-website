@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Disallow server-only or build artifacts (none currently)
+
+# Sitemap reference
+Sitemap: https://mynk.site/sitemap.xml
+
+# Basic crawl-delay suggestion (optional, commented out)
+# Crawl-delay: 5
