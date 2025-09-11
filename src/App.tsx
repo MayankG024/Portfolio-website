@@ -33,19 +33,22 @@ export default function App() {
     trackPageView('home', 'Mayank Gupta - Portfolio');
   }, []);
 
-  // Initialize theme from localStorage or system preference
+  // Initialize theme from localStorage or default to light mode
   useEffect(() => {
     try {
       const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      if (saved === 'dark') {
         setIsDark(true);
         document.documentElement.classList.add('dark');
       } else {
+        // Default to light mode (removed system preference check)
         setIsDark(false);
         document.documentElement.classList.remove('dark');
       }
     } catch {
-      // noop
+      // Default to light mode on error
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
