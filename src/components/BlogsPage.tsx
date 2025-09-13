@@ -64,6 +64,48 @@ Another such commonality that I observed was in our knowledge of the cosmology &
 the conclusion, Religion guides when science reaches its limit. it won’t give you explicit answers but it will leave you at peace.
       `
     },
+     {
+      title: "HUMAN BRAIN: EVOLVED BEYOND CONTROL?",
+      description: "The most researched yet the least understood organ",
+      readTime: "10 MIN",
+      date: "2025.9.13",
+      content: `In high school I found biology to be pretty boring, a subject with a bunch of hard to remember names ; still  I was pretty good at it. but there was one topic or an organ which excited me to learn more about it, the brain. The golden question of  “ how a few pound clump of organic tissue could create something as intricate as consciousness ? ” kept tinkering. everyone reading this might know its importance, it is the one and only thing that differentiated us from all the species that ever existed on this planet. the origin of imagination, memory, speech, fine motor controls & emotions . Also how in some ways it might have been problematic for us.
+
+Most animals have brains, some even larger than ours (elephants, whales) but what they lack the high body size to brain ratio, which is highest in humans. encephalization quotient (EQ) ~ 7.5
+
+Our brain is just 2% of our total body mass yet it consumes around 20-25% of total energy produced by our bodies, also the largest prefrontal cortex of any species which is responsible for cognitive abilities. well this all raises a question - how come only homo sapiens had such radical evolution of the brain and not other species which existed in the same timeline ? evolution works along the lines of utility, early humans were uniquely placed in the middle of the spectrum of different species which forced them to think critically and have social skills if they needed to survive. the ones who had them better thrived, promoting natural selection and this process created a positive feedback loop.
+
+Simply put, where lions and tigers had their claws and jaws, our greatest strength didn’t lie in our physical power or body proportions but in our ability to work collectively and come up with efficient and new ideas and that is what got propagated.
+
+This evolution is physiologically visible today in our brain structure too, it is developed in an outward fashion with growing complexity as you move outwards. the lower brain, cerebellum and brain stem which performs basic functions like movement comes first, layered on top of which is the limbic system which evolved next, controls our memories and emotions. the finally the cerebral cortex, the part of brain which separates us from other apes, makes us human is latest evolution stage; it is the part which gives us rationality and arguably, conscious thinking and this is also the part which makes you spiral into existential dread at night!
+
+A beautiful description of consciousness I read somewhere “It is the universe looking at itself through a nervous system.” which is very true in the sense of its breath of experience. the greatest creation of nature is a system that can replicate itself. Consciousness is thought to emerge from the interconnectedness and dynamics of neural networks but no one can explain how….
+
+Maybe the joke is that consciousness doesn’t exist the way we think it does — it’s just the brain’s marketing team.
+
+Another profound take would be that how great is the phenomena that converts electric signals into consciousness and how even greater is the intelligence that enables the food we eat; to transform into our brain. maybe the greatest of all. The natural collective intelligence . some may even refer to as god. 
+
+Well to even be able to think so deeply and critique one’s own consciousness with the tool that is consciousness itself ; the search for the ultimate how & why , is a great feat in itself. the ones who have been able to reach an answer are the enlightened ones. One with the collective consciousness.
+
+Let’s dial back from the philosophy and try to understand how such rapid evolution has come with its own shortcomings. this take me back to the dialogue from Matthew McConaughey in true detective season 1. 
+
+**“I think human consciousness is a tragic misstep in human evolution. We became too self aware; nature created an aspect of nature separate from itself. We are creatures that should not exist by natural law.”**
+
+While not fully agreeable, this statement carries some truth to it. the problem, I feel, isn’t in the extent of evolution but how that evolution reflects in the modern world. Most drastic evolutionary changes to the brain occurred nearly 2 million years ago with emergence of homo erectus when they developed communities and more sophisticated hunting tools. since that period till around 200,000 years ago saw major evolution, where the physical coordinate work was crucial. but in today’s day and age the division between the physical and mental work isn’t hugely equal. shitloads of physical mundane work has been outsourced to machines. mental work & innovation is valued much more. The stress and anxiety one used to feel when a bear was about to attack can now be felt in completing an assignment deadline. Our brains are optimized for hunting-gathering, gossip, and immediate survival — not for doomscrolling instagram or filing taxes. the factors for survival which were immediate before are now much delayed. people are more reliant on being future focused as societal constructs have shifted. 
+
+All this breeds up Uncertainty. 
+
+All these changes occurred within the last few hundred years, which are nothing in evolutionary terms . basically the brain hasn’t had the time to adapt. Our cortex might be the only reason why humans are so vulnerable to mental illnesses. humans are the only species that can create suffering purely through thought. think about it for a second. our ability to ruminate about the future and the past is the primary factor. diseases like depression, OCD are treated directly by affecting neurotransmitters in the brain. but the real treatment lies in if you can take back control of your own overreactive mind. we all have heard it ‘we suffer more in your imagination than in reality’. 
+
+ The human brains continue to evolve now, and surprisingly they have shrunk since the past 10,000 years. The skulls of men and women today are on average 12.7% smaller than that of *Homo sapiens* who lived during the last ice age. Some theories suggest it’s because societies “outsourced” intelligence to groups, not just individuals. The true reason remains unclear. 
+
+Well this is a classic example of a mixed blessing. our evolved brains have enabled us of great feats but have also given us some hard times. this just an evolutionary side-effect of higher cognition that we have to deal with. ;)
+
+ Perhaps the real measure of evolution is not how powerful the brain has become, but whether we learn to master the very mind that created our world — and our suffering. that will be the next step of natural selection. 
+
+P.s.  some bonus tips to deal with the side effect - memento mori and touch more grass.`
+     },
+
     {
       title: "SELF BELIEF AND THE LAW OF ATTRACTION",
       description: "Exploring the impact of self-belief and the law of attraction on personal success.",
@@ -313,7 +355,7 @@ This convergence is visible in fields like game development, architecture, and p
                   onChange={(e) => setComment(e.target.value)}
                   placeholder="Share your thoughts..."
                   className="flex-1 bg-card border-2 border-border text-foreground p-4 
-                           font-['Jersey_25'] text-base placeholder-muted-foreground resize-none h-24 
+                           font-['Jersey_25'] text-base placeholder-muted-foreground resize-none h-16 
                            focus:outline-none focus:border-green-400 transition-colors leading-relaxed
                            tracking-wide"
                 />
