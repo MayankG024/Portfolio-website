@@ -354,8 +354,8 @@ This convergence is visible in fields like game development, architecture, and p
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   placeholder="Share your thoughts..."
-                  className="flex-1 bg-card border-2 border-border text-foreground p-4 
-                           font-['Jersey_25'] text-base placeholder-muted-foreground resize-none h-16 
+                  className="flex-1 bg-card border-2 border-border text-foreground p-3 
+                           font-['Jersey_25'] text-base placeholder-muted-foreground resize-none h-12 
                            focus:outline-none focus:border-green-400 transition-colors leading-relaxed
                            tracking-wide"
                 />

@@ -387,7 +387,7 @@ export function HomePage({ onSectionChange }: HomePageProps) {
                 <span>Frontend</span>
               </div>
               <div className="ml-3 sm:ml-6 space-y-2">
-                <div className="retro-border px-2 sm:px-3 py-1 sm:py-2 text-sm sm:text-lg md:text-xl font-['Jersey_25'] tracking-wide bg-card text-foreground">HTML/CSS</div>
+                <div className="retro-border px-2 sm:px-3 py-1 sm:py-2 text-sm sm:text-lg md:text-xl font-['Jersey_25'] tracking-wide bg-card text-foreground">TailwindCSS</div>
                 <div className="retro-border px-2 sm:px-3 py-1 sm:py-2 text-sm sm:text-lg md:text-xl font-['Jersey_25'] tracking-wide bg-card text-foreground">React</div>
                 <div className="retro-border px-2 sm:px-3 py-1 sm:py-2 text-sm sm:text-lg md:text-xl font-['Jersey_25'] tracking-wide bg-card text-foreground">Next JS</div>
                 <div className="retro-border px-2 sm:px-3 py-1 sm:py-2 text-sm sm:text-lg md:text-xl font-['Jersey_25'] tracking-wide bg-card text-foreground">Framer Motion</div>
@@ -404,6 +404,7 @@ export function HomePage({ onSectionChange }: HomePageProps) {
                 <div className="retro-border px-2 sm:px-3 py-1 sm:py-2 text-sm sm:text-lg md:text-xl font-['Jersey_25'] tracking-wide bg-card text-foreground">Spring Boot</div>
                 <div className="retro-border px-2 sm:px-3 py-1 sm:py-2 text-sm sm:text-lg md:text-xl font-['Jersey_25'] tracking-wide bg-card text-foreground">Node.js</div>
                 <div className="retro-border px-2 sm:px-3 py-1 sm:py-2 text-sm sm:text-lg md:text-xl font-['Jersey_25'] tracking-wide bg-card text-foreground">Express</div>
+                <div className="retro-border px-2 sm:px-3 py-1 sm:py-2 text-sm sm:text-lg md:text-xl font-['Jersey_25'] tracking-wide bg-card text-foreground">Supabase</div>
               </div>
             </div>
 
