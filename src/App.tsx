@@ -7,6 +7,7 @@ import { AboutPage } from './components/AboutPage';
 import { SocialFooter } from './components/SocialFooter';
 import { WelcomeScreen } from './components/WelcomeScreen';
 import { LoadingScreen } from './components/LoadingScreen';
+import { RetroCursor } from './components/RetroCursor';
 import { initGA, trackPageView, trackNavigation } from './utils/analytics';
 import { useScrollTracking } from './hooks/useScrollTracking';
 
@@ -136,6 +137,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background transition-all duration-500 ease-in-out opacity-100">
+      <RetroCursor />
       <Navigation 
         currentSection={currentSection} 
         onSectionChange={handleSectionChange}

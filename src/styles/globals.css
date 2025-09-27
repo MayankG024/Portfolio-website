@@ -957,3 +957,98 @@ html {
     image-rendering: pixelated;
   }
 }
+
+/* Retro Custom Cursor Styles */
+/* Hide native cursor globally */
+* { cursor: none !important; }
+
+.retro-cursor {
+  position: fixed;
+  width: 16px; /* matches SVG width */
+  height: 24px; /* matches SVG height */
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.04s ease-out;
+}
+
+.retro-cursor.clicking { transform: scale(1.05); }
+
+/* No glow scaling; keep minimal */
+
+/* Remove glow element entirely (we no longer render it) */
+
+.retro-cursor-body { position: relative; width: 16px; height: 24px; }
+
+/* SVG driven; just ensure pixel-rendering */
+.retro-cursor-svg { image-rendering: pixelated; }
+
+/* Trail removed per request */
+
+.retro-cursor-click-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Circular click glow */
+.click-glow {
+  position: absolute;
+  top: 0px;   /* centered at arrow tip */
+  left: 0px;  /* centered at arrow tip */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.2) 40%, transparent 70%);
+  animation: cursor-click-glow 500ms ease-out forwards;
+}
+
+/* No cursor pulse animation needed for minimalism */
+
+@keyframes cursor-click-glow {
+  0% { opacity: 0.7; transform: translate(-40%, -40%) scale(0.6); }
+  70% { opacity: 0.35; transform: translate(-40%, -40%) scale(1.8); }
+  100% { opacity: 0; transform: translate(-40%, -40%) scale(2.4); }
+}
+
+/* Dark mode: invert to white for visibility */
+/* Dark mode adjustments: lighter glow */
+.dark .click-glow {
+  /* Use site beige foreground tone for glow */
+  background: radial-gradient(
+    circle,
+    hsla(var(--foreground), 0.5) 0%,
+    hsla(var(--foreground), 0.25) 40%,
+    transparent 70%
+  );
+}
+
+/* Dark mode: make the entire cursor beige to match site aesthetics */
+.dark .retro-cursor-svg .cursor-shape {
+  stroke: hsl(var(--foreground));
+  fill: hsl(var(--foreground));
+  /* Keep a pixel-style border by adding a darker stroke outline if needed */
+}
+
+/* Interactive element adjustments */
+a, button, [role="button"], input, textarea, select {
+  cursor: none !important;
+}
+
+/* Special cursor state for text elements */
+p, span, div, h1, h2, h3, h4, h5, h6 {
+  cursor: none !important;
+}
+
+/* Ensure cursor shows on hover areas */
+.retro-cursor.hover-state {
+  transform: scale(1.2);
+}
+
+.retro-cursor.hover-state .retro-cursor-glow {
+  opacity: 1;
+  transform: scale(2);
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.9) 0%, rgba(255, 215, 0, 0.4) 50%, transparent 70%);
+}
