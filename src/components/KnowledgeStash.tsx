@@ -139,6 +139,15 @@ export function KnowledgeStash() {
       url: "https://www.youtube.com/watch?v=1hQLp2Cl49Q"
     },
     {
+      title: "EVOLUTION 101",
+      description: "💡 A brief overview of the theory of evolution and its key concepts.",
+      category: "VIDEOS",
+      type: "video",
+      rarity: "★★★★☆",
+      icon: Video,
+      url: "https://www.youtube.com/watch?v=XX7PdJIGiCw"
+    },
+    {
       title: "SAMURAI PHILOSOPHY TO CHANGE YOUR LIFE",
       description: "🥷 Just watch this, will make you feel like a samurai",
       category: "VIDEOS",
