@@ -105,7 +105,36 @@ Well this is a classic example of a mixed blessing. our evolved brains have enab
 
 P.s.  some bonus tips to deal with the side effect - memento mori and touch more grass.`
      },
+     {
+      title: "RADICAL ACCOUNTABILITY IN AN AUTOPILOT WORLD",
+      description: "what it takes to not be just another random person in this world.",
+      readTime: "7 MIN",
+      date: "2025.12.26",
+      content: `The first question that we all should be asking ourselves - how much control do we have over our action, how much of life is happening intentionally.? 
 
+To answer it very very less , A well-known 2010 study by Harvard psychologists Matthew Killingsworth and Daniel Gilbert found that people spend an average of **47%** of their time with their minds wandering, operating on autopilot while performing automated behaviors. And it’s not your fault , humans are wired in such a way as in to conserve energy .
+
+As we get older the saying of  “go with the flow” seems more and more lucrative, the variables in life increase and we seem to lose control. but is it worth living your life like a template , I’ve discussed it before in my essay, the question of free will vs destiny and the only logical workaround that i can devise is - how crucial the question might seem it simply doesn’t matter . this also took me a great deal of time to accept this, since this question keeps lingering in my mind every now and then.  
+
+I often hear my friend who’s completing her Mbbs saying that she’s just accepted the fact that unfortunate things inevitably will happen to her, although she’s doing pretty good for someone in medicine;  well that certainly reduces disappointment but you lose big thing in the process - Accountability to yourself, no one else, not to your parents, partner or friends but to you. Remind yourself time to time that free will is a great gift and you should use it to the fullest. 
+
+The most prominent saying from the Bhagavat Gita goes like this - You have the right to perform your duties, but you are not entitled to the fruits of your actions. let me interpret it for you , this means that apart from your own inner world there are many other global variables at play which are not in your control so instead of expecting try to maximize on the actions you perform and result he ( krishna ) will take care.
+
+When we get comfortable in life ; things are going alright people are not bothering you much, work and study is manageable and you are just doing enough ; that is the time to wake up ; Stagnation feels safe until time compounds against you. time isn’t linear and it will not feel like it either. it will drift like a breeze .  here self reflection becomes crucial , question yourself at night am i going in the right direction . look at your life from a third person perspective , just like you’re in a video game . you would be stat maxing there wouldn’t you !
+
+It is easy to glide through but it is challenging and fun at the same time to challenge your own fate . to fight and mold it according to your will . that is the true main character stuff . become the protagonist. 
+
+ And Don’t just be in your mind thinking about it , journal write about it your goals you’ve been missing out on, good habits which drifted away and replaced by bad ones. this bring loads of awareness , its is an eye-opening experience and most often, a Guilt trip. that when you change your ways.
+
+And the biggest reminder there is to wake up from a robotic life — Memento mori (you will die one day) . this should not be terrifying instead empowering and promoting initiative. 
+
+Agency >> intelligence, if you don’t believe it or don’t know what this means , these are not my words but [**Andrej Karpathy](https://x.com/karpathy)** himself the mind behind Chatgpt and tesla self driving. take a look - https://x.com/karpathy/status/1894099637218545984
+
+Radical Accountability that’s what it takes to not be just another random person in this world.
+
+( this is in its most sense a note to self , a reminder to do better. )
+ 
+ `    },
     {
       title: "SELF BELIEF AND THE LAW OF ATTRACTION",
       description: "Exploring the impact of self-belief and the law of attraction on personal success.",
