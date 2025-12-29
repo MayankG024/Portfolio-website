@@ -14,13 +14,18 @@ import { initGA, trackPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useScrollTracking';
 
 export default function App() {
-  const [showWelcome, setShowWelcome] = useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  // Skip welcome screen if user navigated directly to a specific page
+  const [showWelcome, setShowWelcome] = useState(() => {
+    // Only show welcome on root path or if user hasn't seen it this session
+    const hasSeenWelcome = sessionStorage.getItem('hasSeenWelcome');
+    return location.pathname === '/' && !hasSeenWelcome;
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [isDark, setIsDark] = useState<boolean>(false);
   
-  const location = useLocation();
-  const navigate = useNavigate();
-
   // Initialize Google Analytics on app start
   useEffect(() => {
     initGA();
@@ -102,8 +107,12 @@ export default function App() {
 
   const handleEnterSite = () => {
     setShowWelcome(false);
-    // Navigate to home after welcome screen
-    navigate('/');
+    // Mark that user has seen welcome screen this session
+    sessionStorage.setItem('hasSeenWelcome', 'true');
+    // Don't navigate - stay on current path or go to home if on root
+    if (location.pathname === '/') {
+      navigate('/');
+    }
   };
 
   // Show loading screen first
