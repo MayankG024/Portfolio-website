@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ContactForm } from './ContactForm';
 import { RetroBackground } from './RetroBackground';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-export interface HomePageProps {
-  onSectionChange: (section: string) => void;
-}
-
-export function HomePage({ onSectionChange }: HomePageProps) {
+export function HomePage() {
   const [currentText, setCurrentText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
   const [headerText, setHeaderText] = useState('');
@@ -86,9 +83,9 @@ export function HomePage({ onSectionChange }: HomePageProps) {
   }, []);
 
   const menuItems = [
-    { id: 'blogs', label: '► READ MY THOUGHTS', description: 'Blogs & Essays' },
-    { id: 'knowledge', label: '► KNOWLEDGE VAULT', description: 'Curated Resources' },
-    { id: 'about', label: '► ABOUT THE PLAYER', description: 'My Story & Stats' }
+    { id: 'blogs', path: '/blogs', label: '► READ MY THOUGHTS', description: 'Blogs & Essays' },
+    { id: 'knowledge', path: '/knowledge', label: '► KNOWLEDGE VAULT', description: 'Curated Resources' },
+    { id: 'about', path: '/about', label: '► ABOUT THE PLAYER', description: 'My Story & Stats' }
   ];
 
   const stats = [
@@ -195,12 +192,12 @@ export function HomePage({ onSectionChange }: HomePageProps) {
             </p>
             <p className="jersey-25-regular text-lg sm:text-xl md:text-2xl leading-relaxed mb-4 sm:mb-6">
               (do check out my{' '}
-              <button 
-                onClick={() => onSectionChange('blogs')}
+              <Link 
+                to="/blogs"
                 className="text-green-600 underline decoration-2 underline-offset-4 hover:text-green-800 hover:bg-green-100 px-2 sm:px-3 py-1 sm:py-2 rounded transition-all duration-200 font-medium"
               >
               blogs
-              </button>{' '}
+              </Link>{' '}
               to know more!)
             </p>
           </div>
@@ -219,10 +216,10 @@ export function HomePage({ onSectionChange }: HomePageProps) {
                          tracking-wider leading-relaxed text-foreground">MAIN MENU</h2>
           <div className="space-y-4 sm:space-y-6">
             {menuItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => onSectionChange(item.id)}
-                className={`retro-border w-full p-4 sm:p-6 text-left group transition-all duration-150 ease-in-out border-2 border-border bg-card
+                to={item.path}
+                className={`retro-border w-full p-4 sm:p-6 text-left group transition-all duration-150 ease-in-out border-2 border-border bg-card block
                            shadow-[2px_2px_0px_0px_hsl(var(--border))] hover:bg-muted 
                            hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] 
                            hover:-translate-x-0.5 hover:-translate-y-0.5 
@@ -233,7 +230,7 @@ export function HomePage({ onSectionChange }: HomePageProps) {
                   <span className="text-sm sm:text-lg md:text-xl font-['Press_Start_2P'] tracking-wide text-foreground">{item.label}</span>
                   <span className="text-xs sm:text-sm md:text-base text-green-600 font-['Jersey_25'] tracking-wide">{item.description}</span>
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
         </div>

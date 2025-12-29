@@ -1,25 +1,41 @@
 
+import { NavLink, useLocation } from 'react-router-dom';
 import { trackEvent } from '../utils/analytics';
 import { Sun, Moon } from 'lucide-react';
 
 export interface NavigationProps {
-  currentSection: string;
-  onSectionChange: (section: string) => void;
   isDark?: boolean;
   onToggleTheme?: () => void;
 }
 
-export function Navigation({ currentSection, onSectionChange, isDark, onToggleTheme }: NavigationProps) {
+export function Navigation({ isDark, onToggleTheme }: NavigationProps) {
+  const location = useLocation();
   
-  const handleNavClick = (section: string, buttonName: string) => {
+  const handleNavClick = (buttonName: string) => {
     // Track navigation button clicks
     trackEvent('navigation_click', {
       button_name: buttonName,
-      target_section: section,
-      current_section: currentSection,
+      current_path: location.pathname,
     });
-    onSectionChange(section);
   };
+
+  // Helper to determine if a path is active (handles /blogs/:slug case)
+  const isActiveRoute = (path: string) => {
+    if (path === '/blogs') {
+      return location.pathname === '/blogs' || location.pathname.startsWith('/blogs/');
+    }
+    return location.pathname === path;
+  };
+
+  const navLinkBaseStyles = `px-1.5 sm:px-4 py-1 sm:py-2 text-[7px] sm:text-tiny tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
+                         border-2 border-foreground min-h-[28px] sm:min-h-[32px] min-w-[36px] sm:min-w-[44px]`;
+  
+  const navLinkActiveStyles = 'bg-muted text-foreground shadow-[1px_1px_0px_0px_hsl(var(--border))] translate-x-0.5 translate-y-0.5';
+  
+  const navLinkInactiveStyles = 'bg-background text-foreground shadow-[2px_2px_0px_0px_hsl(var(--border))] hover:bg-muted hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_hsl(var(--border))] active:translate-x-0.5 active:translate-y-0.5';
+
+  const smallNavLinkBaseStyles = `px-1 sm:px-4 py-1 sm:py-2 text-[6px] sm:text-[9px] tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
+                         border-2 border-foreground min-h-[28px] sm:min-h-[32px] min-w-[32px] sm:min-w-[44px]`;
 
   return (
     <nav className="w-full border-b-2 border-foreground bg-background sticky top-0 z-50">
@@ -27,69 +43,50 @@ export function Navigation({ currentSection, onSectionChange, isDark, onToggleTh
         <div className="flex items-center justify-between w-full">
           {/* Left side - Logo and version */}
           <div className="flex items-center space-x-1 sm:space-x-4 flex-shrink-0">
-            <h1 
+            <NavLink 
+              to="/"
               className="text-sm sm:text-heading cursor-pointer hover:text-muted-foreground transition-all duration-200 ease-in-out tracking-[0.05em] hover:animate-bounce hover:transform hover:scale-105 text-foreground"
-              onClick={() => handleNavClick('home', 'MAYANK Logo')}
+              onClick={() => handleNavClick('MAYANK Logo')}
             >
               <span className="sm:hidden">► MAYANK</span>
               <span className="hidden sm:inline">► MAYANK.EXE</span>
-            </h1>
+            </NavLink>
             
             <span className="text-green-800 text-[7px] sm:text-tiny tracking-[0.04em]">v1.2.0</span>
           </div>
           
           {/* Right side - Navigation buttons + Theme Switch */}
           <div className="flex items-center space-x-0.5 sm:space-x-3 flex-shrink-0">
-            <button
-              className={`px-1.5 sm:px-4 py-1 sm:py-2 text-[7px] sm:text-tiny tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
-                         border-2 border-foreground min-h-[28px] sm:min-h-[32px] min-w-[36px] sm:min-w-[44px]
-                         ${
-                currentSection === 'home' 
-                  ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_hsl(var(--border))] translate-x-0.5 translate-y-0.5' 
-                  : 'bg-background text-foreground shadow-[2px_2px_0px_0px_hsl(var(--border))] hover:bg-muted hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_hsl(var(--border))] active:translate-x-0.5 active:translate-y-0.5'
-              }`}
-              onClick={() => handleNavClick('home', 'HOME Button')}
+            <NavLink
+              to="/"
+              className={`${navLinkBaseStyles} ${isActiveRoute('/') && !location.pathname.startsWith('/blogs') && !location.pathname.startsWith('/knowledge') && !location.pathname.startsWith('/about') ? navLinkActiveStyles : navLinkInactiveStyles}`}
+              onClick={() => handleNavClick('HOME Button')}
             >
               HOME
-            </button>
-            <button
-              className={`px-1.5 sm:px-4 py-1 sm:py-2 text-[7px] sm:text-tiny tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
-                         border-2 border-foreground min-h-[28px] sm:min-h-[32px] min-w-[36px] sm:min-w-[44px]
-                         ${
-                currentSection === 'blogs' 
-                  ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_hsl(var(--border))] translate-x-0.5 translate-y-0.5' 
-                  : 'bg-background text-foreground shadow-[2px_2px_0px_0px_hsl(var(--border))] hover:bg-muted hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_hsl(var(--border))] active:translate-x-0.5 active:translate-y-0.5'
-              }`}
-              onClick={() => handleNavClick('blogs', 'BLOGS Button')}
+            </NavLink>
+            <NavLink
+              to="/blogs"
+              className={`${navLinkBaseStyles} ${isActiveRoute('/blogs') ? navLinkActiveStyles : navLinkInactiveStyles}`}
+              onClick={() => handleNavClick('BLOGS Button')}
             >
               BLOGS
-            </button>
-            <button
-              className={`px-1 sm:px-4 py-1 sm:py-2 text-[6px] sm:text-[9px] tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
-                         border-2 border-foreground min-h-[28px] sm:min-h-[32px] min-w-[32px] sm:min-w-[44px]
-                         ${
-                currentSection === 'knowledge' 
-                  ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_hsl(var(--border))] translate-x-0.5 translate-y-0.5' 
-                  : 'bg-background text-foreground shadow-[2px_2px_0px_0px_hsl(var(--border))] hover:bg-muted hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_hsl(var(--border))] active:translate-x-0.5 active:translate-y-0.5'
-              }`}
-              onClick={() => handleNavClick('knowledge', 'KNOWLEDGE Button')}
+            </NavLink>
+            <NavLink
+              to="/knowledge"
+              className={`${smallNavLinkBaseStyles} ${isActiveRoute('/knowledge') ? navLinkActiveStyles : navLinkInactiveStyles}`}
+              onClick={() => handleNavClick('KNOWLEDGE Button')}
             >
               <span className="hidden sm:inline">KNOWLEDGE</span>
               <span className="sm:hidden">KNOW</span>
-            </button>
-            <button
-              className={`px-1 sm:px-4 py-1 sm:py-2 text-[6px] sm:text-[9px] tracking-[0.03em] transition-all duration-150 ease-in-out rounded-sm font-bold
-                         border-2 border-foreground min-h-[28px] sm:min-h-[32px] min-w-[32px] sm:min-w-[44px]
-                         ${
-                currentSection === 'about' 
-                  ? 'bg-muted text-foreground shadow-[1px_1px_0px_0px_hsl(var(--border))] translate-x-0.5 translate-y-0.5' 
-                  : 'bg-background text-foreground shadow-[2px_2px_0px_0px_hsl(var(--border))] hover:bg-muted hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-[1px_1px_0px_0px_hsl(var(--border))] active:translate-x-0.5 active:translate-y-0.5'
-              }`}
-              onClick={() => handleNavClick('about', 'ABOUT Button')}
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={`${smallNavLinkBaseStyles} ${isActiveRoute('/about') ? navLinkActiveStyles : navLinkInactiveStyles}`}
+              onClick={() => handleNavClick('ABOUT Button')}
             >
               <span className="hidden sm:inline">ABOUT ME</span>
               <span className="sm:hidden">ABOUT</span>
-            </button>
+            </NavLink>
 
             {/* Minimal separator (longer, darker, with horizontal padding) */}
             <span aria-hidden="true" className="mx-2 sm:mx-3 px-1.5 sm:px-2 h-5 sm:h-6 flex items-center">

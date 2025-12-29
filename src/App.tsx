@@ -1,38 +1,47 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { HomePage } from './components/HomePage';
 import { BlogsPage } from './components/BlogsPage';
+import { BlogDetail } from './components/BlogDetail';
 import { KnowledgeStash } from './components/KnowledgeStash';
 import { AboutPage } from './components/AboutPage';
 import { SocialFooter } from './components/SocialFooter';
 import { WelcomeScreen } from './components/WelcomeScreen';
 import { LoadingScreen } from './components/LoadingScreen';
 import { RetroCursor } from './components/RetroCursor';
-import { initGA, trackPageView, trackNavigation } from './utils/analytics';
+import { initGA, trackPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useScrollTracking';
 
 export default function App() {
-  const [currentSection, setCurrentSection] = useState('home');
   const [showWelcome, setShowWelcome] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isDark, setIsDark] = useState<boolean>(false);
-
-  // Handle section changes with analytics tracking
-  const handleSectionChange = (newSection: string) => {
-    const previousSection = currentSection;
-    setCurrentSection(newSection);
-    
-    // Track navigation between sections
-    if (previousSection !== newSection) {
-      trackNavigation(previousSection, newSection);
-    }
-  };
+  
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Initialize Google Analytics on app start
   useEffect(() => {
     initGA();
-    trackPageView('home', 'Mayank Gupta - Portfolio');
   }, []);
+
+  // Track page views on route changes
+  useEffect(() => {
+    const pathTitles: Record<string, string> = {
+      '/': 'Home - Mayank Gupta',
+      '/blogs': 'Blogs - Mayank Gupta',
+      '/knowledge': 'Knowledge Stash - Mayank Gupta',
+      '/about': 'About - Mayank Gupta',
+    };
+    
+    // Handle blog detail pages
+    const title = location.pathname.startsWith('/blogs/') 
+      ? 'Blog Post - Mayank Gupta'
+      : pathTitles[location.pathname] || 'Mayank Gupta';
+    
+    trackPageView(location.pathname, title);
+  }, [location.pathname]);
 
   // Initialize theme from localStorage or default to light mode
   useEffect(() => {
@@ -67,21 +76,6 @@ export default function App() {
   // Enable scroll depth tracking
   useScrollTracking();
 
-  // Track section changes and scroll to top
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // Track page view for each section
-    const sectionTitles = {
-      home: 'Home - Mayank Gupta',
-      about: 'About - Mayank Gupta', 
-      knowledge: 'Knowledge Stash - Mayank Gupta',
-      blogs: 'Blogs - Mayank Gupta'
-    };
-    
-    trackPageView(currentSection, sectionTitles[currentSection as keyof typeof sectionTitles]);
-  }, [currentSection]);
-
   // Detect scrolling for enhanced scrollbar effects
   useEffect(() => {
     let scrollTimeout: ReturnType<typeof setTimeout>;
@@ -108,6 +102,8 @@ export default function App() {
 
   const handleEnterSite = () => {
     setShowWelcome(false);
+    // Navigate to home after welcome screen
+    navigate('/');
   };
 
   // Show loading screen first
@@ -120,32 +116,23 @@ export default function App() {
     return <WelcomeScreen onEnter={handleEnterSite} />;
   }
 
-  const renderCurrentSection = () => {
-    switch (currentSection) {
-      case 'home':
-        return <HomePage onSectionChange={handleSectionChange} />;
-      case 'blogs':
-        return <BlogsPage />;
-      case 'knowledge':
-        return <KnowledgeStash />;
-      case 'about':
-        return <AboutPage />;
-      default:
-        return <HomePage onSectionChange={handleSectionChange} />;
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background transition-all duration-500 ease-in-out opacity-100">
       <RetroCursor />
       <Navigation 
-        currentSection={currentSection} 
-        onSectionChange={handleSectionChange}
-  isDark={isDark}
-  onToggleTheme={() => setIsDark((d: boolean) => !d)}
+        isDark={isDark}
+        onToggleTheme={() => setIsDark((d: boolean) => !d)}
       />
       <main>
-        {renderCurrentSection()}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/blogs/:slug" element={<BlogDetail />} />
+          <Route path="/knowledge" element={<KnowledgeStash />} />
+          <Route path="/about" element={<AboutPage />} />
+          {/* Catch-all route - redirect to home */}
+          <Route path="*" element={<HomePage />} />
+        </Routes>
       </main>
       <SocialFooter />
     </div>
