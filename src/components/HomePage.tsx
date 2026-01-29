@@ -282,6 +282,35 @@ export function HomePage() {
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 space-y-2 sm:space-y-0">
                 <div className="flex-1 text-left">
                   <h3 className="font-['Press_Start_2P'] text-sm sm:text-base mb-2 tracking-wider text-left text-foreground">
+                    SOFTWARE DEVELOPER
+                  </h3>
+                  <p className="font-['Jersey_25'] tracking-wide text-base sm:text-lg text-left text-foreground">
+                    INCUBR
+                  </p>
+                </div>
+                <div className="text-left sm:text-right sm:flex-shrink-0">
+                  <div className="font-['Jersey_25'] text-sm sm:text-base tracking-wide text-foreground">
+                    JAN 2026 - PRESENT
+                  </div>
+                  <div className="font-['Jersey_25'] text-green-600 text-sm sm:text-base tracking-wide">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+              <p className="font-['Jersey_25'] text-green-600 leading-relaxed tracking-wide text-base sm:text-lg text-left">
+                On-site software development internship in Delhi, India. Building and shipping production-ready software solutions.
+              </p>
+            </div>
+            
+            <div className="retro-border p-4 bg-background border-2 border-border transition-all duration-150 ease-in-out cursor-pointer
+                           shadow-[2px_2px_0px_0px_hsl(var(--border))] hover:bg-muted 
+                           hover:shadow-[3px_3px_0px_0px_hsl(var(--border))] 
+                           hover:-translate-x-0.5 hover:-translate-y-0.5 
+                           active:shadow-[1px_1px_0px_0px_hsl(var(--border))] 
+                           active:translate-x-0.5 active:translate-y-0.5">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 space-y-2 sm:space-y-0">
+                <div className="flex-1 text-left">
+                  <h3 className="font-['Press_Start_2P'] text-sm sm:text-base mb-2 tracking-wider text-left text-foreground">
                     FREELANCE DEVELOPER
                   </h3>
                   <p className="font-['Jersey_25'] tracking-wide text-base sm:text-lg text-left text-foreground">

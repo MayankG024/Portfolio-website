@@ -24,6 +24,13 @@ export function AboutPage() {
 
   const experience = [
     {
+      role: "SOFTWARE DEVELOPER",
+      company: "INCUBR · INTERNSHIP",
+      period: "JAN 2026 - PRESENT",
+      level: "★★★★★",
+      description: "On-site software development internship in Delhi, India. Building and shipping production-ready software solutions."
+    },
+    {
       role: "FREELANCE DEVELOPER",
       company: "INDEPENDENT",
       period: "FEB 2025 - PRESENT",

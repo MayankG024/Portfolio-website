@@ -1,4 +1,4 @@
-import { Github, Mail, Twitter, Linkedin } from 'lucide-react';
+import { Github, Mail, Twitter, Linkedin, FileDown } from 'lucide-react';
 
 export function SocialFooter() {
   return (
@@ -39,9 +39,17 @@ export function SocialFooter() {
           >
             <Linkedin className="h-5 w-5" />
           </a>
+          <a 
+            href="/Mayank's Resume.pdf" 
+            className="pixel-button p-2 hover:bg-muted transition-colors group"
+            title="Download Resume"
+            download
+          >
+            <FileDown className="h-5 w-5" />
+          </a>
         </div>
         <div className="text-center mt-1">
-          <p className="text-[7px] text-muted-foreground">© MAYANK GUPTA 2025 </p>
+          <p className="text-[7px] text-muted-foreground">© MAYANK GUPTA 2026 </p>
         </div>
       </div>
     </footer>
