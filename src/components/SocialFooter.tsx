@@ -40,7 +40,7 @@ export function SocialFooter() {
             <Linkedin className="h-5 w-5" />
           </a>
           <a 
-            href="/Mayank's Resume.pdf" 
+            href="/Mayank_Resume.pdf" 
             className="pixel-button p-2 hover:bg-muted transition-colors group"
             title="Download Resume"
             download
