@@ -1,4 +1,4 @@
-
+import { memo } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { trackEvent } from '../utils/analytics';
 import { Sun, Moon } from 'lucide-react';
@@ -8,7 +8,7 @@ export interface NavigationProps {
   onToggleTheme?: () => void;
 }
 
-export function Navigation({ isDark, onToggleTheme }: NavigationProps) {
+export const Navigation = memo(function Navigation({ isDark, onToggleTheme }: NavigationProps) {
   const location = useLocation();
   
   const handleNavClick = (buttonName: string) => {
@@ -123,4 +123,4 @@ export function Navigation({ isDark, onToggleTheme }: NavigationProps) {
       </div>
     </nav>
   );
-}
+});

@@ -1,33 +1,17 @@
-import { useEffect, useState } from 'react';
-
-interface CursorPosition {
-  x: number;
-  y: number;
-}
+import { useEffect, useState, useRef } from 'react';
 
 export function RetroCursor() {
-  const [cursorPosition, setCursorPosition] = useState<CursorPosition>({ x: 0, y: 0 });
+  const cursorRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
-  const [isMoving, setIsMoving] = useState(false);
-
 
   useEffect(() => {
-  let moveTimeout: number;
-
     const handleMouseMove = (e: MouseEvent) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-      setIsVisible(true);
-  setIsMoving(true);
-  // Clear existing timeout
-      clearTimeout(moveTimeout);
-      
-      // Set new timeout to detect when mouse stops moving
-      moveTimeout = setTimeout(() => {
-        setIsMoving(false);
-      }, 150);
-
-      // No trail dots (removed per request)
+      // Direct DOM manipulation for instant cursor movement (no React re-render)
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      }
+      if (!isVisible) setIsVisible(true);
     };
 
     const handleMouseDown = () => setIsClicking(true);
@@ -35,13 +19,11 @@ export function RetroCursor() {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    // No trail animation
-
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mouseup', handleMouseUp);
     document.addEventListener('mouseleave', handleMouseLeave);
-  document.addEventListener('mouseenter', handleMouseEnter);
+    document.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
@@ -49,10 +31,8 @@ export function RetroCursor() {
       document.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
-      clearTimeout(moveTimeout);
-      // no interval to clear
     };
-  }, []);
+  }, [isVisible]);
 
   if (!isVisible) return null;
 
@@ -60,11 +40,9 @@ export function RetroCursor() {
     <>
       {/* Main cursor */}
       <div
-        className={`retro-cursor ${isClicking ? 'clicking' : ''} ${isMoving ? 'moving' : ''}`}
-        style={{
-          left: cursorPosition.x,
-          top: cursorPosition.y,
-        }}
+        ref={cursorRef}
+        className={`retro-cursor ${isClicking ? 'clicking' : ''}`}
+        style={{ transform: 'translate(0px, 0px)' }}
       >
         {/* Main cursor body - Windows-like arrow using SVG for fidelity */}
         <div className="retro-cursor-body">

@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { Github, Mail, Twitter, Linkedin, FileDown } from 'lucide-react';
 
-export function SocialFooter() {
+export const SocialFooter = memo(function SocialFooter() {
   return (
     <footer className="fixed bottom-0 left-0 right-0 bg-background border-t-2 border-foreground z-50">
       <div className="max-w-6xl mx-auto px-6 py-2">
@@ -54,4 +55,4 @@ export function SocialFooter() {
       </div>
     </footer>
   );
-}
+});

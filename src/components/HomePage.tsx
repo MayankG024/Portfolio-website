@@ -91,7 +91,7 @@ export function HomePage() {
   const stats = [
    
     { label: 'SPAWNED', value: '2003, India' },
-    { label: 'EXPERIENCE', value: 'Gaining' },
+    { label: 'EXPERIENCE', value: '2+Years' },
     { label: 'EDUCATION', value: 'Bachelor CS 26' },
     { label: 'LANGUAGES', value: 'English, Hindi' }
   ];

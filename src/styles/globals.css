@@ -40,25 +40,25 @@
 }
 
 .dark {
-  /* Base color switched to #000000 (pure black) */
-  --background: 0 0% 0%; /* #000000 */
+  /* Base color: #0d1117 (GitHub dark theme - dark with blue hint) */
+  --background: 215 21% 7%; /* #0d1117 */
   --foreground: 45 40% 80%; /* Beige color */
-  --card: 0 0% 6%; /* Slightly lighter than background */
+  --card: 215 19% 10%; /* Slightly lighter than background */
   --card-foreground: 45 40% 80%; /* Beige color */
-  --popover: 0 0% 0%; /* Match background */
+  --popover: 215 21% 7%; /* Match background */
   --popover-foreground: 45 40% 80%; /* Beige color */
   --primary: 45 40% 80%; /* Beige color */
-  --primary-foreground: 0 0% 0%; /* Match new background */
-  --secondary: 0 0% 8%; /* Slightly lighter secondary */
+  --primary-foreground: 215 21% 7%; /* Match new background */
+  --secondary: 215 18% 13%; /* Slightly lighter secondary */
   --secondary-foreground: 45 40% 80%; /* Beige color */
-  --muted: 0 0% 10%; /* Slightly lighter muted */
+  --muted: 215 16% 16%; /* Slightly lighter muted */
   --muted-foreground: 45 30% 60%; /* Muted beige */
-  --accent: 0 0% 14%; /* Slightly lighter accent */
+  --accent: 215 14% 18%; /* Slightly lighter accent */
   --accent-foreground: 45 40% 80%; /* Beige color */
   --destructive: 0 89% 63%;
-  --destructive-foreground: 0 0% 0%; /* Match new background */
+  --destructive-foreground: 215 21% 7%; /* Match new background */
   --border: 45 40% 80%; /* Beige borders */
-  --input: 0 0% 7%; /* Slightly lighter inputs */
+  --input: 215 19% 9%; /* Slightly lighter inputs */
   --ring: 45 40% 80%; /* Beige ring */
   --chart-1: 45 40% 80%;
   --chart-2: 45 30% 60%;
@@ -387,6 +387,18 @@ html {
   50% { transform: translateY(-1px) scale(1.01); }
 }
 
+/* Star twinkling animation - GPU accelerated */
+@keyframes star-twinkle {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+}
+
+/* Cloud drift animation - moves from right to left */
+@keyframes cloud-drift {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-20vw); }
+}
+
 .retro-blink {
   animation: blink 1s infinite;
 }
@@ -408,8 +420,7 @@ html {
   animation: mario-block-float 6s ease-in-out infinite;
   opacity: 0.15;
   z-index: 0;
-  filter: blur(0.5px);
-  transition: all 0.3s ease;
+  will-change: transform, opacity;
 }
 
 .mario-block::before {
@@ -446,8 +457,7 @@ html {
   animation: mario-coin-bounce 4s ease-in-out infinite;
   opacity: 0.2;
   z-index: 0;
-  filter: blur(0.5px);
-  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  will-change: transform, opacity;
 }
 
 /* Retro Scrollbar Utility Classes */
@@ -964,14 +974,17 @@ html {
 
 .retro-cursor {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 16px; /* matches SVG width */
   height: 24px; /* matches SVG height */
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.04s ease-out;
+  will-change: transform;
+  /* No transition for instant cursor movement */
 }
 
-.retro-cursor.clicking { transform: scale(1.05); }
+.retro-cursor.clicking .retro-cursor-body { transform: scale(1.05); }
 
 /* No glow scaling; keep minimal */
 
@@ -1043,7 +1056,7 @@ p, span, div, h1, h2, h3, h4, h5, h6 {
 }
 
 /* Ensure cursor shows on hover areas */
-.retro-cursor.hover-state {
+.retro-cursor.hover-state .retro-cursor-body {
   transform: scale(1.2);
 }
 
