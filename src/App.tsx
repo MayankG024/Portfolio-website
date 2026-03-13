@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { SocialFooter } from './components/SocialFooter';
@@ -8,12 +8,11 @@ import { RetroCursor } from './components/RetroCursor';
 import { initGA, trackPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useScrollTracking';
 
-// Lazy load route components for code splitting
-const HomePage = lazy(() => import('./components/HomePage').then(m => ({ default: m.HomePage })));
-const BlogsPage = lazy(() => import('./components/BlogsPage').then(m => ({ default: m.BlogsPage })));
-const BlogDetail = lazy(() => import('./components/BlogDetail').then(m => ({ default: m.BlogDetail })));
-const KnowledgeStash = lazy(() => import('./components/KnowledgeStash').then(m => ({ default: m.KnowledgeStash })));
-const AboutPage = lazy(() => import('./components/AboutPage').then(m => ({ default: m.AboutPage })));
+import { HomePage } from './components/HomePage';
+import { BlogsPage } from './components/BlogsPage';
+import { BlogDetail } from './components/BlogDetail';
+import { KnowledgeStash } from './components/KnowledgeStash';
+import { AboutPage } from './components/AboutPage';
 
 export default function App() {
   const location = useLocation();
@@ -135,17 +134,15 @@ export default function App() {
         onToggleTheme={() => setIsDark((d: boolean) => !d)}
       />
       <main>
-        <Suspense fallback={<div className="min-h-screen bg-background" />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/blogs" element={<BlogsPage />} />
-            <Route path="/blogs/:slug" element={<BlogDetail />} />
-            <Route path="/knowledge" element={<KnowledgeStash />} />
-            <Route path="/about" element={<AboutPage />} />
-            {/* Catch-all route - redirect to home */}
-            <Route path="*" element={<HomePage />} />
-          </Routes>
-        </Suspense>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/blogs/:slug" element={<BlogDetail />} />
+          <Route path="/knowledge" element={<KnowledgeStash />} />
+          <Route path="/about" element={<AboutPage />} />
+          {/* Catch-all route - redirect to home */}
+          <Route path="*" element={<HomePage />} />
+        </Routes>
       </main>
       <SocialFooter />
     </div>
