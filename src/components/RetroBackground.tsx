@@ -38,6 +38,15 @@ interface Star {
   size: number;
 }
 
+interface FloatingEmoji {
+  id: number;
+  emoji: string;
+  x: number;
+  y: number;
+  animationDelay: number;
+  opacity: number;
+}
+
 export function RetroBackground() {
   const [gameElements, setGameElements] = useState<GameElement[]>([]);
   const [lightningCloudId, setLightningCloudId] = useState<number | null>(null);
@@ -111,6 +120,25 @@ export function RetroBackground() {
       });
     }
     return cloudData;
+  }, []);
+
+  // Generate emojis once
+  const emojis = useMemo<FloatingEmoji[]>(() => {
+    const list = ['🎮', '🕹️', '👾', '🎮', '🕹️', '👾'];
+    return list.map((emoji, i) => {
+      // Keep emojis near left and right edges (5-20% and 80-95%)
+      const isLeft = i % 2 === 0;
+      const x = isLeft ? 5 + Math.random() * 15 : 80 + Math.random() * 15;
+      
+      return {
+        id: i,
+        emoji,
+        x,
+        y: 10 + Math.random() * 80,
+        animationDelay: Math.random() * 8,
+        opacity: 0.15 + Math.random() * 0.2, // Increased transparency
+      };
+    });
   }, []);
 
   // Lightning effect - simple interval, no RAF
@@ -268,6 +296,24 @@ export function RetroBackground() {
         </div>
       ))}
 
+      {/* Floating Emojis - CSS animated */}
+      {emojis.map((emoji) => (
+        <div
+          key={`emoji-${emoji.id}`}
+          className="absolute pointer-events-none z-0 select-none will-change-transform"
+          style={{
+            left: `${emoji.x}%`,
+            top: `${emoji.y}%`,
+            fontSize: '1.5rem',
+            opacity: emoji.opacity,
+            animation: 'celestial-gentle-bounce 8s ease-in-out infinite',
+            animationDelay: `${emoji.animationDelay}s`,
+          }}
+        >
+          {emoji.emoji}
+        </div>
+      ))}
+
       {/* Floating Clouds - CSS animated */}
       {clouds.map((cloud) => {
         const isLightning = lightningCloudId === cloud.id;
@@ -322,7 +368,7 @@ export function RetroBackground() {
         <div
           key={element.id}
           className={`
-            ${element.type === 'block' ? 'mario-block' : 'mario-coin'}
+            ${element.type === 'block' ? 'mario-block opacity-40' : 'mario-coin'}
             ${element.active ? 'active' : ''}
             ${Math.random() > 0.85 ? 'spinning' : ''}
             ${getSizeClass(element.size)}
