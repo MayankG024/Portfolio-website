@@ -88,6 +88,23 @@ export const Navigation = memo(function Navigation({ isDark, onToggleTheme }: Na
               <span className="sm:hidden">ABOUT</span>
             </NavLink>
 
+            <a
+              href="https://maynk.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${smallNavLinkBaseStyles} ${navLinkInactiveStyles} relative group inline-flex items-center justify-center`}
+              aria-label="professional site"
+              onClick={() => handleNavClick('PROFESSIONAL SITE Button')}
+            >
+              <span className="text-base sm:text-xl leading-none">🌐</span>
+              {/* Custom retro tooltip */}
+              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 pointer-events-none
+                               bg-background border-2 border-foreground text-foreground font-bold px-2 py-1 text-[8px] sm:text-[10px] whitespace-nowrap 
+                               shadow-[2px_2px_0px_0px_hsl(var(--border))] z-[100] tracking-widest uppercase">
+                PROFESSIONAL SITE
+              </span>
+            </a>
+
             {/* Minimal separator (longer, darker, with horizontal padding) */}
             <span aria-hidden="true" className="mx-2 sm:mx-3 px-1.5 sm:px-2 h-5 sm:h-6 flex items-center">
               <span className="w-px h-full bg-foreground/70"></span>
