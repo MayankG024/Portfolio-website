@@ -920,6 +920,53 @@ html {
     overflow-x: auto;
     white-space: nowrap;
   }
+
+  /* =============================================
+     MOBILE: Restore native cursor
+     Touch/pointer devices don't use a mouse
+     cursor — hide the retro cursor component and
+     restore the native pointer.
+  ============================================= */
+  * {
+    cursor: auto !important;
+  }
+
+  a, button, [role="button"] {
+    cursor: pointer !important;
+  }
+
+  p, span, div, h1, h2, h3, h4, h5, h6 {
+    cursor: auto !important;
+  }
+
+  /* Hide retro cursor element entirely on mobile */
+  .retro-cursor {
+    display: none !important;
+  }
+
+  /* =============================================
+     MOBILE: ASCII name art — scale to fit viewport
+     without horizontal scroll.
+     Uses a wrapping container that transforms the
+     pre-block down to fit within the card width.
+  ============================================= */
+  .mobile-ascii-wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .mobile-ascii-scale {
+    /* The ASCII art is ~100 chars wide at 6px = ~600px.
+       Scale it to fit ~90vw minus card padding (~32px) */
+    transform-origin: top left;
+    /* The scale is applied inline via JS; this is a fallback */
+    white-space: pre;
+    display: block;
+    line-height: 1.15;
+  }
 }
 
 /* Tablet-specific optimizations */

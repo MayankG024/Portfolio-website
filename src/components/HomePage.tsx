@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ContactForm } from './ContactForm';
 import { RetroBackground } from './RetroBackground';
@@ -11,6 +11,9 @@ export function HomePage() {
   const [showHeaderCursor, setShowHeaderCursor] = useState(true);
   const [asciiVisible, setAsciiVisible] = useState(false);
   const [welcomeComplete, setWelcomeComplete] = useState(false);
+  const [asciiScale, setAsciiScale] = useState(1);
+  const asciiWrapperRef = useRef<HTMLDivElement>(null);
+  const asciiInnerRef = useRef<HTMLPreElement>(null);
   
   // Scroll animations for different sections
   const headerAnimation = useScrollAnimation({ threshold: 0.2 });
@@ -82,6 +85,24 @@ export function HomePage() {
     return () => clearInterval(cursorTimer);
   }, []);
 
+  // Dynamically scale ASCII art on mobile so it fits without horizontal scroll
+  const updateAsciiScale = useCallback(() => {
+    if (!asciiWrapperRef.current || !asciiInnerRef.current) return;
+    const wrapperWidth = asciiWrapperRef.current.clientWidth;
+    const innerWidth = asciiInnerRef.current.scrollWidth;
+    if (innerWidth > 0) {
+      const scale = Math.min(1, wrapperWidth / innerWidth);
+      setAsciiScale(scale);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateAsciiScale();
+    const ro = new ResizeObserver(updateAsciiScale);
+    if (asciiWrapperRef.current) ro.observe(asciiWrapperRef.current);
+    return () => ro.disconnect();
+  }, [updateAsciiScale]);
+
   const menuItems = [
     { id: 'blogs', path: '/blogs', label: '► READ MY THOUGHTS', description: 'Blogs & Essays' },
     { id: 'knowledge', path: '/knowledge', label: '► KNOWLEDGE VAULT', description: 'Curated Resources' },
@@ -139,7 +160,8 @@ export function HomePage() {
               {showHeaderCursor && headerText.length < headerIntroText.length && <span className="typewriter-cursor">█</span>}
             </span>
           </div>
-          <div className={`text-[6px] sm:text-[8px] md:text-[10px] font-mono leading-tight whitespace-pre tracking-wide transition-opacity duration-500 overflow-x-auto text-foreground ${
+          {/* Desktop ASCII art — hidden on mobile */}
+          <div className={`hidden sm:block text-[8px] md:text-[10px] font-mono leading-tight whitespace-pre tracking-wide transition-opacity duration-500 overflow-x-auto text-foreground ${
             asciiVisible ? 'opacity-100' : 'opacity-0'
           }`}>
 {`
@@ -150,6 +172,33 @@ export function HomePage() {
     ██║ ╚═╝ ██║██║  ██║   ██║   ██║  ██║██║ ╚████║██║  ██╗    ╚██████╔╝╚██████╔╝██║        ██║   ██║  ██║
     ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝     ╚═════╝  ╚═════╝ ╚═╝        ╚═╝   ╚═╝  ╚═╝
 `}
+          </div>
+
+          {/* Mobile ASCII art — scaled to fit without horizontal scroll */}
+          <div
+            ref={asciiWrapperRef}
+            className={`sm:hidden mobile-ascii-wrapper transition-opacity duration-500 ${
+              asciiVisible ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ height: asciiScale < 1 ? `${Math.round(6 * 6 * asciiScale * 1.35)}px` : 'auto' }}
+          >
+            <pre
+              ref={asciiInnerRef}
+              className="mobile-ascii-scale font-mono text-foreground text-[6px] leading-tight tracking-wide"
+              style={{
+                transform: `scale(${asciiScale})`,
+                transformOrigin: 'top left',
+                whiteSpace: 'pre',
+                display: 'block',
+                margin: 0,
+                padding: 0,
+              }}
+            >{`    ███╗   ███╗ █████╗ ██╗   ██╗ █████╗ ███╗   ██╗██╗  ██╗     ██████╗ ██╗   ██╗██████╗ ████████╗ █████╗ 
+    ████╗ ████║██╔══██╗╚██╗ ██╔╝██╔══██╗████╗  ██║██║ ██╔╝    ██╔════╝ ██║   ██║██╔══██╗╚══██╔══╝██╔══██╗
+    ██╔████╔██║███████║ ╚████╔╝ ███████║██╔██╗ ██║█████╔╝     ██║  ███╗██║   ██║██████╔╝   ██║   ███████║
+    ██║╚██╔╝██║██╔══██║  ╚██╔╝  ██╔══██║██║╚██╗██║██╔═██╗     ██║   ██║██║   ██║██╔═══╝    ██║   ██╔══██║
+    ██║ ╚═╝ ██║██║  ██║   ██║   ██║  ██║██║ ╚████║██║  ██╗    ╚██████╔╝╚██████╔╝██║        ██║   ██║  ██║
+    ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝     ╚═════╝  ╚═════╝ ╚═╝        ╚═╝   ╚═╝  ╚═╝`}</pre>
           </div>
         </div>
 
