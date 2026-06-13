@@ -28,7 +28,7 @@ export function AboutPage() {
       company: "INCUBR",
       period: "JAN 2026 - MAY 2026",
       level: "★★★★★",
-      description: "On-site software development internship in Delhi, India. Building and shipping production-ready software solutions."
+      description: "On-site software development in Delhi, India. Building and shipping production-ready software solutions."
     },
     {
       role: "FREELANCE DEVELOPER",

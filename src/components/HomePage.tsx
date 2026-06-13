@@ -341,7 +341,7 @@ export function HomePage() {
                   </div>
                 </div>
                 <p className="font-['Jersey_25'] text-green-600 leading-relaxed tracking-wide text-base sm:text-lg text-left">
-                  On-site software development internship in Delhi, India. Building and shipping production-ready software solutions.
+                  On-site software development in Delhi, India. Building and shipping production-ready software solutions.
                 </p>
               </div>
 
