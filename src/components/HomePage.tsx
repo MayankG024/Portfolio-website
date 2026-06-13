@@ -149,8 +149,8 @@ export function HomePage() {
           <div
             ref={headerAnimation.elementRef}
             className={`retro-border p-4 sm:p-8 bg-card relative transition-all duration-700 ease-out ${headerAnimation.isVisible
-                ? 'translate-y-0 opacity-100'
-                : 'translate-y-8 opacity-0'
+              ? 'translate-y-0 opacity-100'
+              : 'translate-y-8 opacity-0'
               }`}
           >
             <div className="text-left mb-4">
@@ -203,8 +203,8 @@ export function HomePage() {
           <div
             ref={welcomeAnimation.elementRef}
             className={`retro-border p-4 sm:p-8 bg-card transition-all duration-700 ease-out ${welcomeAnimation.isVisible
-                ? 'translate-x-0 opacity-100'
-                : '-translate-x-12 opacity-0'
+              ? 'translate-x-0 opacity-100'
+              : '-translate-x-12 opacity-0'
               }`}
           >
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 font-['Press_Start_2P'] 
@@ -252,8 +252,8 @@ export function HomePage() {
           <div
             ref={menuAnimation.elementRef}
             className={`retro-border p-4 sm:p-8 bg-card transition-all duration-700 ease-out ${menuAnimation.isVisible
-                ? 'translate-x-0 opacity-100'
-                : 'translate-x-12 opacity-0'
+              ? 'translate-x-0 opacity-100'
+              : 'translate-x-12 opacity-0'
               }`}
           >
             <h2 className="text-base sm:text-lg md:text-xl font-bold mb-6 sm:mb-8 font-['Press_Start_2P'] 
@@ -283,8 +283,8 @@ export function HomePage() {
           <div
             ref={statsAnimation.elementRef}
             className={`retro-border p-4 sm:p-8 bg-card transition-all duration-700 ease-out ${statsAnimation.isVisible
-                ? 'translate-y-0 opacity-100'
-                : 'translate-y-8 opacity-0'
+              ? 'translate-y-0 opacity-100'
+              : 'translate-y-8 opacity-0'
               }`}
           >
             <h2 className="text-base sm:text-lg md:text-xl font-bold mb-6 sm:mb-8 font-['Press_Start_2P'] 
@@ -333,7 +333,7 @@ export function HomePage() {
                   </div>
                   <div className="text-left sm:text-right sm:flex-shrink-0">
                     <div className="font-['Jersey_25'] text-sm sm:text-base tracking-wide text-foreground">
-                      JAN 2026 - PRESENT
+                      JAN 2026 - MAY 2026
                     </div>
                     <div className="font-['Jersey_25'] text-green-600 text-sm sm:text-base tracking-wide">
                       ★★★★★
@@ -362,7 +362,7 @@ export function HomePage() {
                   </div>
                   <div className="text-left sm:text-right sm:flex-shrink-0">
                     <div className="font-['Jersey_25'] text-sm sm:text-base tracking-wide text-foreground">
-                      FEB 2025 - PRESENT
+                      APR 2024 - PRESENT
                     </div>
                     <div className="font-['Jersey_25'] text-green-600 text-sm sm:text-base tracking-wide">
                       ★★★★★
@@ -386,7 +386,7 @@ export function HomePage() {
                   </div>
                   <div className="text-left sm:text-right sm:flex-shrink-0">
                     <div className="font-['Jersey_25'] text-sm sm:text-base tracking-wide text-foreground">
-                      SEP 2024 - DEC 2025
+                      OCT 2024 - DEC 2025
                     </div>
                     <div className="font-['Jersey_25'] text-green-600 text-sm sm:text-base tracking-wide">
                       ★★★★☆
@@ -410,7 +410,7 @@ export function HomePage() {
                   </div>
                   <div className="text-left sm:text-right sm:flex-shrink-0">
                     <div className="font-['Jersey_25'] text-sm sm:text-base tracking-wide text-foreground">
-                      FEB 2024 - NOV 2025
+                      SEPT 2024 - NOV 2025
                     </div>
                     <div className="font-['Jersey_25'] text-green-600 text-sm sm:text-base tracking-wide">
                       ★★★☆☆
@@ -428,8 +428,8 @@ export function HomePage() {
           <div
             ref={skillsAnimation.elementRef}
             className={`retro-border p-4 sm:p-8 bg-card transition-all duration-700 ease-out ${skillsAnimation.isVisible
-                ? 'translate-x-0 opacity-100'
-                : '-translate-x-12 opacity-0'
+              ? 'translate-x-0 opacity-100'
+              : '-translate-x-12 opacity-0'
               }`}
           >
             <h2 className="text-base sm:text-lg md:text-xl font-bold mb-6 sm:mb-8 font-['Press_Start_2P'] 
@@ -497,8 +497,8 @@ export function HomePage() {
           <div
             ref={contactAnimation.elementRef}
             className={`transition-all duration-700 ease-out ${contactAnimation.isVisible
-                ? 'translate-y-0 opacity-100'
-                : 'translate-y-8 opacity-0'
+              ? 'translate-y-0 opacity-100'
+              : 'translate-y-8 opacity-0'
               }`}
           >
             <ContactForm />
